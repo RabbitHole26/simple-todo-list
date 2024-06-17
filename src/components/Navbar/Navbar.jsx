@@ -31,7 +31,7 @@ const Navbar = ({ todoItems }) => {
               <Link onClick={() => daisyUiRemoveFocus()} to='/about' className="link link-hover">About</Link>
             </li>
             <li>        
-              <Link onClick={() => daisyUiRemoveFocus()} to='https://github.com/RabbitHole26' className="link link-hover" target="blank">Github</Link>
+              <Link onClick={() => daisyUiRemoveFocus()} to='https://github.com/RabbitHole26/todo-list-public' className="link link-hover" target="blank">Github</Link>
             </li>
             <li>
               <button className="link link-hover" onClick={handleExportData}>Export list to JSON</button>
