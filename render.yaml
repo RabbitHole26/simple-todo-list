@@ -1,7 +1,6 @@
 services:
   - type: web
-    name: md-preview-public
-    env: static
+    name: todo-list-public
     staticPublishPath: dist
     runtime: static
     routes:
