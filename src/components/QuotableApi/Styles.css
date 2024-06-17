@@ -1,0 +1,9 @@
+#textShadowColor {
+  > li:nth-child(odd) {
+    text-shadow: 1px 1px 3px teal
+  }
+  > li:nth-child(even) {
+    margin-top: 5px;
+    text-shadow: 1px 1px 3px red
+  }
+}

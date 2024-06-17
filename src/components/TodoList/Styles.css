@@ -1,0 +1,52 @@
+/* * {
+  border: 1px solid red !important;
+} */
+
+.lineThrough {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.listItem {
+  background-color: rgba(0, 128, 128, 0.5);
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  transition: all 0.1s linear;
+
+  &:hover {
+    background-color: rgba(0, 128, 128, 0.9);
+    transform: scale(1.1);
+    transition: all 0.1s linear;
+  }
+}
+
+.listItemChecked {
+  background-color: rgba(0, 128, 128, 0.05);
+}
+
+.faCheckmarkCustom {
+  transition: all 0.1s ease-in-out;
+
+  &:active {
+    transform: scale(0.8) !important;
+    transition: all 0.1s ease-in-out;
+  }
+}
+
+.faCustomHover {
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.1s ease-in-out;
+  }
+}
+
+.todoCustom {
+  background-color: rgb(0, 65, 65);
+}
+
+.boxShadow {
+  box-shadow: 5px 5px 3px rgb(90, 90, 90);
+}

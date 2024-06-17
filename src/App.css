@@ -1,0 +1,35 @@
+.lightMode {
+  background-color: rgb(240, 240, 240);
+  color: rgb(35, 35, 35);
+
+  #input {
+    background-color: rgb(219, 219, 219); 
+  }
+
+  .lightModeSpecialButton {
+    color: rgb(240, 240, 240);
+  }
+
+  .lightModeSpecialButtonBorder {
+    border: 1px solid rgb(35, 35, 35);
+  }
+
+  .lightModeSpecialQuotableApi {
+    border-bottom: 1px solid rgb(35, 35, 35);
+  }
+
+  .lightModeSpecialList {
+    &:hover {
+      color: rgb(240, 240, 240);
+    }
+  }
+
+  .lightModeSpecialItemButtons {
+    color: rgb(240, 240, 240);
+  }
+}
+
+.disableTouchPoints .listItem:hover {
+  background-color: rgba(0, 128, 128, 0.5);
+  transform: scale(1.0);
+}
