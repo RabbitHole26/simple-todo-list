@@ -1,6 +1,10 @@
-const useHandleCheckmarkClick = ({ setItemsArray }) => {
-  const handleCheckmarkClick = (index) => {
-    setItemsArray(prev => {
+import { useItemsContext } from "../../context/ItemsContext"
+
+const useHandleActionItem = () => {
+  const {setItems} = useItemsContext()
+
+  const handleActionItem = (index) => {
+    setItems(prev => {
       const updatedItems = prev.map((item, i) => {
         return i === index
           ? {...item, isLineThrough: !item.isLineThrough}
@@ -22,7 +26,7 @@ const useHandleCheckmarkClick = ({ setItemsArray }) => {
     })
   }
 
-  return {handleCheckmarkClick}
+  return {handleActionItem}
 }
 
-export default useHandleCheckmarkClick
+export default useHandleActionItem

@@ -1,16 +1,18 @@
 import { useThemeContext } from "../../context/ThemeContext"
+import { useItemsContext } from "../../context/ItemsContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons"
 import { Link } from "react-router-dom"
 import { exportDataToFile } from "../../utils/handle-data"
 import daisyUiRemoveFocus from "../../utils/daisyUi-remove-focus"
 
-const Navbar = ({ todoItems }) => {
+const Navbar = () => {
   const { toggleTheme, isDarkMode} = useThemeContext()
+  const { items } = useItemsContext()
 
   const handleExportData = () => {
     daisyUiRemoveFocus()
-    exportDataToFile(todoItems, "todoItems.json")
+    exportDataToFile(items, "todoItems.json")
   }
 
   return (

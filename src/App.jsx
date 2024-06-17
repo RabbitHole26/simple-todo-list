@@ -1,6 +1,7 @@
 // import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './context/ThemeContext'
+import { ItemsProvider } from './context/ItemsContext'
 import HomePage from './pages/HomePage/HomePage'
 import About from './pages/About/About'
 import Layout from './components/Layout/Layout'
@@ -19,14 +20,16 @@ function App() {
   return (
     // <div className={isTouchDevice ? 'disableTouchPoints' : ''}>
     <div>
-      <ThemeProvider>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="about" element={<About />} />
-          </Routes>
-        </Layout>
-      </ThemeProvider>
+      <ItemsProvider>
+        <ThemeProvider>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="about" element={<About />} />
+            </Routes>
+          </Layout>
+        </ThemeProvider>
+      </ItemsProvider>
     </div>
   );
 }

@@ -1,53 +1,50 @@
 import { useState, useRef, useEffect } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
-import { Button } from '../StyledComponents/Button'
+import { useItemsContext } from "../../context/ItemsContext"
 import { errorDiv, formWrapper, itemWrapper, liStyle, topLevelWrapperNoBorder } from "../TailwindClassess/TailwindClassess"
+import { Button } from '../StyledComponents/Button'
 import useHandleAddItem from "../Handlers/use-handle-add-item"
-import useHandleCheckmarkClick from "../Handlers/use-handle-checkmark-click"
-import useHandleDelete from "../Handlers/use-handle-delete"
+import useHandleActionItem from "../Handlers/use-handle-action-item"
+import useHandleDelete from "../Handlers/use-handle-delete-item"
 import useHandlErrorPopup from "../Handlers/use-handle-error-popup"
 import './Styles.css'
 
 const TodoList = () => {
   // state variables
   const [input, setInput] = useState('')
-  const [itemsArray, setItemsArray] = useState([])
   const [error, setError] = useState(false)
+
+  // context and other variables
+  const {items, setItems} = useItemsContext()
   const inputRef = useRef()
 
   // get user data from local storage when the component mounts
   useEffect(() => {
-    const savedItems = JSON.parse(localStorage.getItem('todoItems'))
+    const savedItems = JSON.parse(localStorage.getItem('items'))
     if (savedItems)
-      setItemsArray(savedItems)
+      setItems(savedItems)
   }, [])
 
   // save user data to local storage whenever itemsArray is updated
   useEffect(() => {
-    localStorage.setItem('todoItems', JSON.stringify(itemsArray))
-  }, [itemsArray])
+    localStorage.setItem('items', JSON.stringify(items))
+  }, [items])
 
   /*
   ** HANDLERS
   */
 
   const {handleAddItem} = useHandleAddItem({
-    itemsArray, 
-    setItemsArray, 
     input, 
     setInput, 
     setError, 
     inputRef
   })
 
-  const {handleCheckmarkClick} = useHandleCheckmarkClick({
-    setItemsArray
-  })
+  const {handleActionItem} = useHandleActionItem()
 
-  const {handleDelete} = useHandleDelete({
-    setItemsArray
-  })
+  const {handleDeleteItem} = useHandleDelete()
 
   const {handleErrorPopup} = useHandlErrorPopup({
     setError,
@@ -99,24 +96,27 @@ const TodoList = () => {
 
         {/* to-do item list */}
         <ul className="min-w-[250px] pb-[100px]">
-          {itemsArray.map((item, index) => (
+          {items.map((item, index) => (
             <li className={`${liStyle} ${!item.isVisible ? '' : 'listItem'} ${item.isLineThrough ? 'listItemChecked' : ''}`} key={index}>
               {item.isVisible && (
                 <div className={`lightModeSpecialList ${itemWrapper}`}>
                   <p className={`max-w-full break-words mt-1 pb-0 ${item.isLineThrough ? 'lineThrough' : ''}`}>
                     {item.text.slice(0, 1).toUpperCase() + item.text.slice(1)}
                   </p>
+
+                  {/* buttons inside the list item */}
                   <div className="todoCustom lightModeSpecialItemButtons flex gap-6 sm:mb-1 p-2 rounded-md">
-                    <button className="flex items-center" onClick={() => handleCheckmarkClick(index)} >
+                    <button className="flex items-center" onClick={() => handleActionItem(index)} >
                       {item.isLineThrough
                         ? <FontAwesomeIcon className="text-2xl faCheckmarkCustom faCustomHover" icon={faCircleXmark} />
                         : <FontAwesomeIcon className="text-2xl faCheckmarkCustom faCustomHover" icon={faCheck} />
                       }
                     </button>
-                    <button className="flex items-center" onClick={() => handleDelete(index)}>
+                    <button className="flex items-center" onClick={() => handleDeleteItem(index)}>
                       <FontAwesomeIcon className="text-2xl faCustomHover" icon={faTrash} />
                     </button>
                   </div>
+
                 </div>
               )}
             </li>

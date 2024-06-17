@@ -1,8 +1,12 @@
 // TODO: instead of removing items form the array I decided not to render them when trash icon is clicked. REASON: introduce new functionality at a later stage od dev, eg: restoring deleted items.
 
-const useHandleDelete = ({ setItemsArray }) => {
-  const handleDelete = (index) => {
-    setItemsArray(prev => {
+import { useItemsContext } from "../../context/ItemsContext"
+
+const useHandleDeleteItem = () => {
+  const {setItems} = useItemsContext()
+
+  const handleDeleteItem = (index) => {
+    setItems(prev => {
       return prev.map((item, i) => {
         return i === index
           ? {...item, isVisible: !item.isVisible}
@@ -11,7 +15,7 @@ const useHandleDelete = ({ setItemsArray }) => {
     })
   }
 
-  return {handleDelete}
+  return {handleDeleteItem}
 }
 
-export default useHandleDelete
+export default useHandleDeleteItem

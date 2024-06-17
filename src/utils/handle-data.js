@@ -1,21 +1,31 @@
 const exportDataToFile = (array, filename) => {
-  // create Blob object for data
-  const blob = new Blob([JSON.stringify(array)], { type: 'application/json' })
+  const visibleItems = array.filter(item => item.isVisible)
+  const visibleItemsJSON = visibleItems.map(item => ({
+    text: item.text,
+    taskDone: item.isLineThrough
+  }))
+  
+  if (visibleItems.length > 0) {
+    // create Blob object for data
+    const blob = new Blob([JSON.stringify(visibleItemsJSON)], { type: 'application/json' })
 
-  // create temporary anchor element in DOM to store the Blob object
-  const anchor = document.createElement('a')
+    // create temporary anchor element in DOM to store the Blob object
+    const anchor = document.createElement('a')
 
-  // create a URL for the anchor element
-  anchor.href = URL.createObjectURL(blob)
+    // create a URL for the anchor element
+    anchor.href = URL.createObjectURL(blob)
 
-  // set the file name for the download
-  anchor.download = filename
+    // set the file name for the download
+    anchor.download = filename
 
-  // trigger a click event on the anchor element to start download
-  anchor.click()
+    // trigger a click event on the anchor element to start download
+    anchor.click()
 
-  // free the browser resources by removing the object URL, this is a standard clean-up procedure
-  URL.revokeObjectURL(anchor.href)
+    // free the browser resources by removing the object URL, this is a standard clean-up procedure
+    URL.revokeObjectURL(anchor.href)
+  } else {
+    alert('Unable to export empty list. Please add some items to your list.')
+  }
 }
 
 // // onfileSelected prop is from the parent component this allows parent component to define how file is used
