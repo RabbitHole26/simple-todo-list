@@ -7,12 +7,16 @@ import { exportDataToFile } from "../../utils/handle-data"
 import daisyUiRemoveFocus from "../../utils/daisyUi-remove-focus"
 
 const Navbar = () => {
-  const { toggleTheme, isDarkMode} = useThemeContext()
+  const { isDarkMode,setIsDarkMode } = useThemeContext()
   const { items } = useItemsContext()
 
   const handleExportData = () => {
     daisyUiRemoveFocus()
     exportDataToFile(items, "todoItems.json")
+  }
+
+  const toggleTheme = () => {
+    setIsDarkMode(prevMode => !prevMode)
   }
 
   return (
