@@ -1,5 +1,5 @@
 import { useItemsContext } from "../../context/ItemsContext"
-import sortItems from "../../utils/sort-items"
+// import sortItems from "../../utils/sort-items"
 
 const useHandleAddItem = ({input, setInput, setError, inputRef}) => {
   const {items, setItems} = useItemsContext()
@@ -15,8 +15,9 @@ const useHandleAddItem = ({input, setInput, setError, inputRef}) => {
 
     error
     ? (
-        setItems(prev => [newItem, ...prev]),
-        items.some(item => item.isLineThrough) && setItems(sortItems)
+        // setItems(prev => [newItem, ...prev]),
+        // items.some(item => item.isLineThrough) && setItems(sortItems)
+        setItems(prev => [newItem, ...prev])
       )
     : setError(true);
   

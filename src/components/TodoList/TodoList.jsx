@@ -24,6 +24,7 @@ const TodoList = () => {
     const savedItems = JSON.parse(localStorage.getItem('items'))
     if (savedItems)
       setItems(savedItems)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // save user data to local storage whenever itemsArray is updated
