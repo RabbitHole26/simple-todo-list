@@ -1,35 +1,37 @@
-.lightMode {
-  background-color: rgb(240, 240, 240);
-  color: rgb(35, 35, 35);
+/* ! global CSS variables */
 
-  #input {
-    background-color: rgb(219, 219, 219); 
-  }
+:root {
+  /* light mode colors */
+  --light-mode-primary: rgb(240, 240, 240);
+  --light-mode-input: rgb(230, 230, 230);
+  --light-mode-bg: rgb(210, 210, 210);
+  --light-mode-text: rgb(35, 35, 35);
+  /* colors */
+  --list-item-bg: rgba(0, 128, 128, 0.5);
+  --list-item-checked: rgba(0, 128, 128, 0.05);
+  /* effects */
+  --transition-custom: transition: all 0.1s ease-in-out;
+}
+
+/* ! Light mode classes */
+
+.lightMode {
+  background-color: var(--light-mode-bg);
+  color: var(--light-mode-text);
 
   .lightModeSpecialButton {
-    color: rgb(240, 240, 240);
+    color: var(--light-mode-primary);
   }
 
   .lightModeSpecialButtonBorder {
-    border: 1px solid rgb(35, 35, 35);
+    border: 1px solid var(--light-mode-text);
   }
 
   .lightModeSpecialQuotableApi {
-    border-bottom: 1px solid rgb(35, 35, 35);
-  }
-
-  .lightModeSpecialList {
-    &:hover {
-      color: rgb(240, 240, 240);
-    }
+    border-bottom: 1px solid var(--light-mode-text);
   }
 
   .lightModeSpecialItemButtons {
-    color: rgb(240, 240, 240);
+    color: var(--light-mode-primary);
   }
 }
-
-/* .disableTouchPoints .listItem:hover {
-  background-color: rgba(0, 128, 128, 0.5);
-  transform: scale(1.0);
-} */

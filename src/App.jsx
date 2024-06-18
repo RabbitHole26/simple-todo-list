@@ -8,17 +8,7 @@ import Layout from './components/Layout/Layout'
 import './App.css'
 
 function App() {
-  // const [isTouchDevice, setIsTouchDevice] = useState(false)
-
-  // useEffect(() => {
-  //   const detectTouch = () => {
-  //     return 'ontouchstart' in window || navigator.maxTouchPoints
-  //   }
-  //   setIsTouchDevice(detectTouch())
-  // }, [])
-
   return (
-    // <div className={isTouchDevice ? 'disableTouchPoints' : ''}>
     <div>
       <ItemsProvider>
         <ThemeProvider>
@@ -31,7 +21,7 @@ function App() {
         </ThemeProvider>
       </ItemsProvider>
     </div>
-  );
+  )
 }
 
 export default App

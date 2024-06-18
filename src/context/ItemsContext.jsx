@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react"
-import useLocalStorage from "../utils/useLocalStorage"
 import setInitialState from "../utils/set-initial-state"
+import useLocalStorage from "../utils/useLocalStorage"
 
 const ItemsContext = createContext()
 

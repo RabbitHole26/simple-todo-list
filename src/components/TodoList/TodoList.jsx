@@ -2,6 +2,7 @@ import { useState, useRef } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import { useItemsContext } from "../../context/ItemsContext"
+import { useThemeContext } from "../../context/ThemeContext"
 import { errorDiv, formWrapper, itemWrapper, liStyle, topLevelWrapperNoBorder } from "../TailwindClassess/TailwindClassess"
 import { Button } from '../StyledComponents/Button'
 import useHandleAddItem from "../Handlers/use-handle-add-item"
@@ -15,6 +16,7 @@ const TodoList = () => {
   const [input, setInput] = useState('')
   const [error, setError] = useState(false)
   const {items} = useItemsContext()
+  const {isDarkMode} = useThemeContext()
   const inputRef = useRef()
 
   /*
@@ -52,9 +54,7 @@ const TodoList = () => {
           value={input}
           ref={inputRef}
           disabled={error}
-          id="input"
-          className='h-10 rounded-md p-2 flex-auto'
-          placeholder=""
+          className={`h-10 rounded-md p-2 flex-auto ${isDarkMode ? 'bg-black' : 'bg-neutral-100'}`}
           onChange={handleInputChange}
           autoFocus
         />
@@ -68,11 +68,11 @@ const TodoList = () => {
         </Button>
       </form>
 
-      <div className="max-w-full">
+      <div className="max-w-full flex flex-col justify-center">
 
         {/* error pop-up */}
         {error && 
-          (<div className={`lightModeSpecialButtonBorder boxShadow ${errorDiv}`}>
+          (<div className={`lightModeSpecialButtonBorder max-w-[350px] boxShadow ${errorDiv}`}>
             <p className="text-center">
               You can&rsquo;t add duplicate or empty items.
             </p>
@@ -91,7 +91,7 @@ const TodoList = () => {
                   </p>
 
                   {/* buttons inside the list item */}
-                  <div className="todoCustom lightModeSpecialItemButtons flex gap-6 sm:mb-1 p-2 rounded-md">
+                  <div className="listItemControls lightModeSpecialItemButtons flex gap-6 sm:mb-1 p-2 rounded-md">
                     <button className="flex items-center" onClick={() => handleActionItem(index)} >
                       {item.isLineThrough
                         ? <FontAwesomeIcon className="text-2xl faCheckmarkCustom faCustomHover" icon={faCircleXmark} />
