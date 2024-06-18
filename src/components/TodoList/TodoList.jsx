@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import { useItemsContext } from "../../context/ItemsContext"
@@ -14,27 +14,16 @@ const TodoList = () => {
   // state variables
   const [input, setInput] = useState('')
   const [error, setError] = useState(false)
-
-  // context and other variables
-  const {items, setItems} = useItemsContext()
+  const {items} = useItemsContext()
   const inputRef = useRef()
-
-  // get user data from local storage when the component mounts
-  useEffect(() => {
-    const savedItems = JSON.parse(localStorage.getItem('items'))
-    if (savedItems)
-      setItems(savedItems)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  // save user data to local storage whenever itemsArray is updated
-  useEffect(() => {
-    localStorage.setItem('items', JSON.stringify(items))
-  }, [items])
 
   /*
   ** HANDLERS
   */
+
+  const {handleActionItem} = useHandleActionItem()
+
+  const {handleDeleteItem} = useHandleDelete()
 
   const {handleAddItem} = useHandleAddItem({
     input, 
@@ -42,10 +31,6 @@ const TodoList = () => {
     setError, 
     inputRef
   })
-
-  const {handleActionItem} = useHandleActionItem()
-
-  const {handleDeleteItem} = useHandleDelete()
 
   const {handleErrorPopup} = useHandlErrorPopup({
     setError,
