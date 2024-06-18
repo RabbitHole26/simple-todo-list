@@ -1,14 +1,13 @@
-import { createContext, useState, useContext, useEffect } from "react";
-import useSetInitialState from "../utils/useSetInitialState";
+import { createContext, useState, useContext } from "react";
+import setInitialState from "../utils/set-initial-state";
+import useLocalStorage from "../utils/useLocalStorage";
 
 const ThemeContext = createContext()
 
 const ThemeProvider = ({children}) => {
-  const [isDarkMode, setIsDarkMode] = useState(useSetInitialState('isDarkMode', false))
+  const [isDarkMode, setIsDarkMode] = useState(setInitialState('isDarkMode', false))
 
-  useEffect(() => {
-    localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode))
-  }, [isDarkMode])
+  useLocalStorage('isDarkMode', isDarkMode)
 
   return (
     <ThemeContext.Provider value={{

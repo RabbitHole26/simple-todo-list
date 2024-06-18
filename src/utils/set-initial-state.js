@@ -1,8 +1,8 @@
-const useSetInitialState = (key, fallback) => {
+const setInitialState = (key, fallback) => {
   const data = localStorage.getItem(key)
   return data
     ? JSON.parse(data)
     : fallback
 }
 
-export default useSetInitialState
+export default setInitialState

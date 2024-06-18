@@ -1,11 +1,11 @@
 import { createContext, useContext, useState } from "react"
-import useSetInitialState from "../utils/useSetInitialState"
 import useLocalStorage from "../utils/useLocalStorage"
+import setInitialState from "../utils/set-initial-state"
 
 const ItemsContext = createContext()
 
 const ItemsProvider = ({children}) => {
-  const [items, setItems] = useState(useSetInitialState('items', []))
+  const [items, setItems] = useState(setInitialState('items', []))
 
   useLocalStorage('items', items)
 
