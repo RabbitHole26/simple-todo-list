@@ -10,6 +10,4 @@ export const liStyle = 'text-lg sm:text-xl min-w-[100px]'
 
 export const aboutContentWrapper = 'flex flex-col flex-grow gap-[50px] p-5 max-w-[600px] xl:max-w-[1000px] items-center md:mt-[50px]'
 
-export const footerWrapper = 'footer footer-center p-10 bg-base-200 text-base-content rounded-t-md'
-
 export const errorDiv = 'border rounded-md p-5 mb-8 flex flex-col gap-2'

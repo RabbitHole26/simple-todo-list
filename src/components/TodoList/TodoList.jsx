@@ -68,16 +68,18 @@ const TodoList = () => {
         </Button>
       </form>
 
-      <div className="max-w-full flex flex-col justify-center">
+      <div className="max-w-full">
 
         {/* error pop-up */}
         {error && 
-          (<div className={`lightModeSpecialButtonBorder max-w-[350px] boxShadow ${errorDiv}`}>
-            <p className="text-center">
-              You can&rsquo;t add duplicate or empty items.
-            </p>
-            <Button className="lightModeSpecialButton mx-[25%]" onClick={handleErrorPopup}>Ok</Button>
-          </div>)
+          <div className="w-full flex justify-center">
+            <div className={`lightModeSpecialButtonBorder max-w-[350px] boxShadow ${errorDiv}`}>
+              <p className="text-center">
+                You can&rsquo;t add duplicate or empty items.
+              </p>
+              <Button className="lightModeSpecialButton mx-[25%]" onClick={handleErrorPopup}>Ok</Button>
+            </div>
+          </div>
         }
 
         {/* to-do item list */}
