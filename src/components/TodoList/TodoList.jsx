@@ -1,6 +1,6 @@
 import { useState, useRef } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash, faCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faCheck, faRotateLeft } from '@fortawesome/free-solid-svg-icons'
 import { useItemsContext } from "../../context/ItemsContext"
 import { useThemeContext } from "../../context/ThemeContext"
 import { errorDiv, formWrapper, itemWrapper, liStyle, topLevelWrapperNoBorder } from "../TailwindClassess/TailwindClassess"
@@ -96,7 +96,7 @@ const TodoList = () => {
                   <div className="listItemControls lightModeSpecialItemButtons flex gap-6 sm:mb-1 p-2 rounded-md">
                     <button className="flex items-center" onClick={() => handleActionItem(index)} >
                       {item.isLineThrough
-                        ? <FontAwesomeIcon className="text-2xl faCheckmarkCustom faCustomHover" icon={faCircleXmark} />
+                        ? <FontAwesomeIcon className="text-2xl faCheckmarkCustom faCustomHover" icon={faRotateLeft} />
                         : <FontAwesomeIcon className="text-2xl faCheckmarkCustom faCustomHover" icon={faCheck} />
                       }
                     </button>

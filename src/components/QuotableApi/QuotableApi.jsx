@@ -44,13 +44,15 @@ const QuotableApi = () => {
 
   const renderContent =
     isLoading
-      ? <div>
+      ? <div className="min-h-[60px]">
           {isDarkMode
             ? <ClipLoader color="white" size={50} />
             : <ClipLoader color="black" size={50} />
           }
         </div>
-      : renderQuote
+      : <div className="min-h-[60px]">
+          {renderQuote}
+        </div>
   
   return (
     <>
