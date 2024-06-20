@@ -1,8 +1,9 @@
+import { useErrorContext } from "../../context/ErrorContext"
 import { useItemsContext } from "../../context/ItemsContext"
-// import sortItems from "../../utils/sort-items"
 
-const useHandleAddItem = ({input, setInput, setError, inputRef}) => {
+const useHandleAddItem = ({input, setInput, inputRef}) => {
   const {items, setItems} = useItemsContext()
+  const {setError} = useErrorContext()
 
   const handleAddItem = (event) => {
     event.preventDefault()

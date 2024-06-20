@@ -1,12 +1,11 @@
 import { Button } from '../../components/StyledComponents/Button'
 import { Link } from 'react-router-dom'
-import { aboutContentWrapper } from '../../components/TailwindClassess/TailwindClassess'
 import './About.css'
 
 const About = () => {
   return (
     <div className={`flex flex-col items-center`}>
-      <div className={aboutContentWrapper}>
+      <div className="flex flex-col flex-grow gap-[50px] p-5 max-w-[600px] xl:max-w-[1000px] items-center md:mt-[50px]">
         <h1 className="text-3xl xl:text-4xl mt-10">
           Hello there! 👋
         </h1>
@@ -31,7 +30,7 @@ const About = () => {
           </p>
         </div>
         <div className='flex flex-col gap-5 pb-[120px]'>
-          <Button className='lightModeSpecialButton'>
+          <Button className='lightModeButtonTextColor'>
             <a
               href="mailto:derivatives_four@protonmail.com?subject=To-Do%20app%20feedback"
               >
@@ -39,7 +38,7 @@ const About = () => {
             </a>
           </Button>
           <Link to='/'>
-            <Button $primary className='lightModeSpecialButton'>Back to main page</Button>
+            <Button $primary className='lightModeButtonTextColor'>Back to main page</Button>
           </Link>
         </div>
       </div>

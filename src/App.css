@@ -19,19 +19,15 @@
   background-color: var(--light-mode-bg);
   color: var(--light-mode-text);
 
-  .lightModeSpecialButton {
+  .lightModeButtonTextColor {
     color: var(--light-mode-primary);
   }
 
-  .lightModeSpecialButtonBorder {
+  .lightModeBorder {
     border: 1px solid var(--light-mode-text);
   }
 
-  .lightModeSpecialQuotableApi {
+  .lightModeBorderBottom {
     border-bottom: 1px solid var(--light-mode-text);
-  }
-
-  .lightModeSpecialItemButtons {
-    color: var(--light-mode-primary);
   }
 }

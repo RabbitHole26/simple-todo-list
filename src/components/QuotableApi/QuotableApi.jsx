@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { ClipLoader } from "react-spinners"
 import { Button } from "../StyledComponents/Button"
-import { topLevelWrapper } from "../TailwindClassess/TailwindClassess"
 import { useThemeContext } from '../../context/ThemeContext'
 import './Styles.css'
 
@@ -56,10 +55,10 @@ const QuotableApi = () => {
   
   return (
     <>
-      <div className={`lightModeSpecialQuotableApi ${topLevelWrapper}`}>
+      <div className={`lightModeBorderBottom flex flex-col items-center m-3 mt-0 md:mx-[10%] gap-5 border-b p-10`}>
         <h2 className='hidden sm:block sm:text-2xl'>Quote of the day!</h2>
         {renderContent}
-        <Button $primary className="hidden lightModeSpecialButton sm:block" onClick={handleClick}>New Quote</Button>
+        <Button $primary className="hidden lightModeButtonTextColor sm:block" onClick={handleClick}>New Quote</Button>
       </div>
     </>
   )
