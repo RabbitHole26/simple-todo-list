@@ -1,7 +1,7 @@
 import { useErrorContext } from "../../context/ErrorContext"
 import { useItemsContext } from "../../context/ItemsContext"
 
-const useHandleAddItem = ({input, setInput, inputRef}) => {
+const useHandleAddItem = ({input, setInput}) => {
   const {items, setItems} = useItemsContext()
   const {setError} = useErrorContext()
 
@@ -23,7 +23,6 @@ const useHandleAddItem = ({input, setInput, inputRef}) => {
     : setError(true);
   
     setInput('')
-    inputRef.current.focus()
   }
 
   return {handleAddItem}

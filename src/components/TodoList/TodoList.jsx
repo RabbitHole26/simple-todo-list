@@ -30,8 +30,7 @@ const TodoList = () => {
 
   const {handleAddItem} = useHandleAddItem({
     input, 
-    setInput, 
-    inputRef
+    setInput,
   })
 
   const handleInputChange = (event) => {
