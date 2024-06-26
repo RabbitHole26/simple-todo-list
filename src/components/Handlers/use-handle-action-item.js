@@ -3,26 +3,36 @@ import { useItemsContext } from "../../context/ItemsContext"
 const useHandleActionItem = () => {
   const {setItems} = useItemsContext()
 
-  const handleActionItem = (index) => {
+  const handleActionItem = (itemId) => {
     setItems(prev => {
-      const updatedItems = prev.map((item, i) => {
-        return i === index
+      // updated items with toggled isLineThrough property
+      const updatedItems = prev.map(item => itemId === item.id
           ? {...item, isLineThrough: !item.isLineThrough}
           : item
-      })
+      )
   
-      // Separate checked and unchecked items
+      // separate checked and unchecked items
       const checkedItems = updatedItems.filter(item => item.isLineThrough)
       const uncheckedItems = updatedItems.filter(item => !item.isLineThrough)
-  
-      // If an item is unchecked, move it to the top
-      if (!updatedItems[index].isLineThrough) {
-        const uncheckedItem = updatedItems[index]
-        const newUncheckedItems = [uncheckedItem, ...uncheckedItems.filter(item => item !== uncheckedItem)]
-        return [...newUncheckedItems, ...checkedItems]
-      }
-  
-      return [...uncheckedItems, ...checkedItems]
+
+      // find index of the item that was just actioned
+      const actionedItemIndex = updatedItems.findIndex(item => item.id === itemId)
+
+      // return actioned item
+      const actionedItem = updatedItems[actionedItemIndex]
+
+      // return all of the unchecked items excluding the actioned item
+      const uncheckedItemsWithoutActionItem = uncheckedItems.filter(item => item !== actionedItem)
+
+      // move the unchecked actioned item to the top of the unchecked items list
+      const newUncheckedItems = [actionedItem, ...uncheckedItemsWithoutActionItem]
+
+      // if the actioned item was just unchecked (isLineThrough changed from true to false)
+      return !updatedItems[actionedItemIndex].isLineThrough
+        // return combined list with updated order  
+        ? [...newUncheckedItems, ...checkedItems]
+        // return combined list with original order
+        : [...uncheckedItems, ...checkedItems]
     })
   }
 

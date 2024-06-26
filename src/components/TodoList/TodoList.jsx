@@ -67,28 +67,26 @@ const TodoList = () => {
 
         {/* to-do item list */}
         <ul className="min-w-[250px] pb-[100px]">
-          {items.map((item, index) => (
-            <li className={`text-lg sm:text-xl min-w-[100px] ${!item.isVisible ? '' : 'listItem'} ${item.isLineThrough ? 'listItemChecked' : ''}`} key={index}>
-              {item.isVisible && (
-                <div className={`lightModeSpecialList w-full flex flex-col gap-[20px] sm:gap-[30px] items-center place-content-between`}>
-                  <p className={`max-w-full break-words mt-1 pb-0 ${item.isLineThrough ? 'lineThrough' : ''}`}>
-                    {item.text.slice(0, 1).toUpperCase() + item.text.slice(1)}
-                  </p>
+          {items.map((item) => (
+            <li className={`text-lg sm:text-xl min-w-[100px] listItem ${item.isLineThrough ? 'listItemChecked' : ''}`} key={item.id}>
+              <div className={`lightModeSpecialList w-full flex flex-col gap-[20px] sm:gap-[30px] items-center place-content-between`}>
+                <p className={`max-w-full break-words mt-1 pb-0 ${item.isLineThrough ? 'lineThrough' : ''}`}>
+                  {item.task.slice(0, 1).toUpperCase() + item.task.slice(1).toLowerCase()}
+                </p>
 
-                  <div className="listItemControls lightModeButtonTextColor flex gap-6 sm:mb-1 p-2 rounded-md">
-                    <button className="flex items-center" onClick={() => handleActionItem(index)} >
-                      {item.isLineThrough
-                        ? <FontAwesomeIcon className="text-2xl faCheckmarkCustom faCustomHover" icon={faRotateLeft} />
-                        : <FontAwesomeIcon className="text-2xl faCheckmarkCustom faCustomHover" icon={faCheck} />
-                      }
-                    </button>
-                    <button className="flex items-center" onClick={() => handleDeleteItem(index)}>
-                      <FontAwesomeIcon className="text-2xl faCustomHover" icon={faTrash} />
-                    </button>
-                  </div>
-
+                <div className="listItemControls lightModeButtonTextColor flex gap-6 sm:mb-1 p-2 rounded-md">
+                  <button className="flex items-center" onClick={() => handleActionItem(item.id)} >
+                    {item.isLineThrough
+                      ? <FontAwesomeIcon className="text-2xl faCheckmarkCustom faCustomHover" icon={faRotateLeft} />
+                      : <FontAwesomeIcon className="text-2xl faCheckmarkCustom faCustomHover" icon={faCheck} />
+                    }
+                  </button>
+                  <button className="flex items-center" onClick={() => handleDeleteItem(item.id)}>
+                    <FontAwesomeIcon className="text-2xl faCustomHover" icon={faTrash} />
+                  </button>
                 </div>
-              )}
+
+              </div>
             </li>
           ))}
         </ul>
