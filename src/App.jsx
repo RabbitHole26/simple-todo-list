@@ -2,17 +2,17 @@
 import { Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './context/ThemeContext'
 import { ItemsProvider } from './context/ItemsContext'
+import { ErrorProvider } from './context/ErrorContext'
+import { RefProvider } from './context/RefContext'
 import HomePage from './pages/HomePage/HomePage'
 import About from './pages/About/About'
 import Layout from './components/Layout/Layout'
 import './App.css'
-import { ErrorProvider } from './context/ErrorContext'
-import { InputRefProvider } from './context/inputRefContext'
 
 function App() {
   return (
     <div>
-      <InputRefProvider>
+      <RefProvider>
         <ErrorProvider>
           <ItemsProvider>
             <ThemeProvider>
@@ -25,7 +25,7 @@ function App() {
             </ThemeProvider>
           </ItemsProvider>
         </ErrorProvider>
-      </InputRefProvider>
+      </RefProvider>
     </div>
   )
 }

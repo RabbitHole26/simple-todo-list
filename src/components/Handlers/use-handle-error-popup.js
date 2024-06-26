@@ -1,10 +1,10 @@
 import { useErrorContext } from "../../context/ErrorContext"
-import { useInputRefContext } from "../../context/inputRefContext"
+import { useRefContext } from "../../context/RefContext"
 
 const useHandlErrorPopup = ({ setIsFadingOut }) => {
   const {setError} = useErrorContext()
 
-  const inputRef = useInputRefContext()
+  const inputRef = useRefContext()
   
   const handleErrorPopup = () => {
     setIsFadingOut(true)

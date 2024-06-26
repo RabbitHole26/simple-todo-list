@@ -4,7 +4,7 @@ import { faTrash, faCheck, faRotateLeft } from '@fortawesome/free-solid-svg-icon
 import { useItemsContext } from "../../context/ItemsContext"
 import { useThemeContext } from "../../context/ThemeContext"
 import { useErrorContext } from "../../context/ErrorContext"
-import { useInputRefContext } from "../../context/inputRefContext"
+import { useRefContext } from "../../context/RefContext"
 import { Button } from '../StyledComponents/Button'
 import useHandleAddItem from "../Handlers/use-handle-add-item"
 import useHandleActionItem from "../Handlers/use-handle-action-item"
@@ -18,7 +18,7 @@ const TodoList = () => {
   const {items} = useItemsContext()
   const {isDarkMode} = useThemeContext()
 
-  const inputRef = useInputRefContext()
+  const inputRef = useRefContext()
 
   /*
   ** HANDLERS
@@ -75,7 +75,6 @@ const TodoList = () => {
                     {item.text.slice(0, 1).toUpperCase() + item.text.slice(1)}
                   </p>
 
-                  {/* buttons inside the list item */}
                   <div className="listItemControls lightModeButtonTextColor flex gap-6 sm:mb-1 p-2 rounded-md">
                     <button className="flex items-center" onClick={() => handleActionItem(index)} >
                       {item.isLineThrough
