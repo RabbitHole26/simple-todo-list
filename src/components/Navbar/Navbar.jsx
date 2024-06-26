@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom"
 import { useThemeContext } from "../../context/ThemeContext"
-import { useItemsContext } from "../../context/ItemsContext"
+// import { useItemsContext } from "../../context/ItemsContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons"
-import { exportDataToFile } from "../../utils/handle-data"
+// import { exportDataToFile } from "../../utils/handle-data"
 import daisyUiRemoveFocus from "../../utils/daisyUi-remove-focus"
 
 const Navbar = () => {
   const {isDarkMode,setIsDarkMode} = useThemeContext()
-  const {items} = useItemsContext()
+  // const {items} = useItemsContext()
 
-  const handleExportData = () => {
-    daisyUiRemoveFocus()
-    exportDataToFile(items, "todoItems.json")
-  }
+  // const handleExportData = () => {
+  //   daisyUiRemoveFocus()
+  //   exportDataToFile(items, "todoItems.json")
+  // }
 
   const toggleTheme = () => {
     setIsDarkMode(prevMode => !prevMode)
@@ -39,9 +39,9 @@ const Navbar = () => {
             <li>        
               <Link onClick={() => daisyUiRemoveFocus()} to='https://github.com/RabbitHole26/todo-list-public' className="link link-hover" target="blank">Github</Link>
             </li>
-            <li>
+            {/* <li>
               <button className="link link-hover" onClick={handleExportData}>Export list to JSON</button>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
