@@ -1,11 +1,15 @@
 import { createContext, useContext, useState } from "react"
 import setInitialState from "../utils/set-initial-state"
 import useLocalStorage from "../utils/useLocalStorage"
+import createTask from "../components/Handlers/createTask"
 
 const ItemsContext = createContext()
 
 const ItemsProvider = ({children}) => {
-  const [items, setItems] = useState(setInitialState('items', []))
+  const [items, setItems] = useState(setInitialState(
+    'items', 
+    [[createTask('banana so good!')], [createTask('strawbery is yummy!')]]
+  ))
 
   useLocalStorage('items', items)
 

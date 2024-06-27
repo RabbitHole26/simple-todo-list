@@ -1,42 +1,47 @@
 import { useItemsContext } from "../../context/ItemsContext"
+import { useListContext } from "../../context/ListContext"
 
 const useHandleActionItem = () => {
-  const {setItems} = useItemsContext()
+  const { setItems } = useItemsContext()
+  const { altListActive } = useListContext()
 
   const handleActionItem = (itemId) => {
     setItems(prev => {
-      // updated items with toggled isLineThrough property
-      const updatedItems = prev.map(item => itemId === item.id
-          ? {...item, isLineThrough: !item.isLineThrough}
+      // create a copy of the current items array
+      const updatedItems = [...prev]
+      
+      // update the relevant sub-array
+      updatedItems[altListActive ? 1 : 0] = updatedItems[altListActive ? 1 : 0].map(item => 
+        item.id === itemId
+          ? { ...item, isLineThrough: !item.isLineThrough }
           : item
       )
-  
-      // separate checked and unchecked items
-      const checkedItems = updatedItems.filter(item => item.isLineThrough)
-      const uncheckedItems = updatedItems.filter(item => !item.isLineThrough)
 
-      // find index of the item that was just actioned
-      const actionedItemIndex = updatedItems.findIndex(item => item.id === itemId)
+      // separate the updated items into checked and unchecked
+      const list = updatedItems[altListActive ? 1 : 0]
+      const checkedItems = list.filter(item => item.isLineThrough)
+      const uncheckedItems = list.filter(item => !item.isLineThrough)
 
-      // return actioned item
-      const actionedItem = updatedItems[actionedItemIndex]
+      // find the actioned item and its index
+      const actionedItemIndex = list.findIndex(item => item.id === itemId)
+      const actionedItem = list[actionedItemIndex]
 
-      // return all of the unchecked items excluding the actioned item
-      const uncheckedItemsWithoutActionItem = uncheckedItems.filter(item => item !== actionedItem)
+      // reorder the items based on the toggled status of the actioned item
+      let newUncheckedItems = uncheckedItems
 
-      // move the unchecked actioned item to the top of the unchecked items list
-      const newUncheckedItems = [actionedItem, ...uncheckedItemsWithoutActionItem]
+      if (!actionedItem.isLineThrough) {
+        // if the actioned item is now unchecked, move it to the top of the unchecked items
+        newUncheckedItems = [actionedItem, ...uncheckedItems.filter(item => item.id !== itemId)]
+      }
 
-      // if the actioned item was just unchecked (isLineThrough changed from true to false)
-      return !updatedItems[actionedItemIndex].isLineThrough
-        // return combined list with updated order  
-        ? [...newUncheckedItems, ...checkedItems]
-        // return combined list with original order
-        : [...uncheckedItems, ...checkedItems]
+      // combine the items to retain desired order
+      updatedItems[altListActive ? 1 : 0] = [...newUncheckedItems, ...checkedItems]
+
+      return updatedItems
     })
   }
 
-  return {handleActionItem}
+  return { handleActionItem }
 }
 
 export default useHandleActionItem

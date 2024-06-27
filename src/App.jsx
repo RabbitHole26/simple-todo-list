@@ -8,24 +8,27 @@ import HomePage from './pages/HomePage/HomePage'
 import About from './pages/About/About'
 import Layout from './components/Layout/Layout'
 import './App.css'
+import { ListProvider } from './context/ListContext'
 
 function App() {
   return (
     <div>
-      <RefProvider>
-        <ErrorProvider>
-          <ItemsProvider>
-            <ThemeProvider>
-              <Layout>
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="about" element={<About />} />
-                </Routes>
-              </Layout>
-            </ThemeProvider>
-          </ItemsProvider>
-        </ErrorProvider>
-      </RefProvider>
+      <ListProvider>
+        <RefProvider>
+          <ErrorProvider>
+            <ItemsProvider>
+              <ThemeProvider>
+                <Layout>
+                  <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="about" element={<About />} />
+                  </Routes>
+                </Layout>
+              </ThemeProvider>
+            </ItemsProvider>
+          </ErrorProvider>
+        </RefProvider>
+      </ListProvider>
     </div>
   )
 }
