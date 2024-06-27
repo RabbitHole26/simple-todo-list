@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { useThemeContext } from "../../context/ThemeContext"
 // import { useItemsContext } from "../../context/ItemsContext"
+import { useErrorContext } from "../../context/ErrorContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons"
 // import { exportDataToFile } from "../../utils/handle-data"
@@ -8,6 +9,7 @@ import daisyUiRemoveFocus from "../../utils/daisyUi-remove-focus"
 
 const Navbar = () => {
   const {isDarkMode,setIsDarkMode} = useThemeContext()
+  const {error} = useErrorContext()
   // const {items} = useItemsContext()
 
   // const handleExportData = () => {
@@ -20,7 +22,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className={`flex flex-row-reverse sticky justify-between top-0 z-50 ${isDarkMode ? 'bg-stone-800 text-white' : 'bg-neutral-400 text-black'}`}>
+    <nav className={`flex flex-row-reverse sticky justify-between top-0 z-50 ${isDarkMode ? 'bg-stone-800 text-white' : 'bg-neutral-400 text-black'} ${error ? 'opacity-20' : 'opacity100'}`}>
       <button className='btn btn-ghost px-5 m-1' onClick={toggleTheme}>
         {isDarkMode
           ? <FontAwesomeIcon className="w-[14px]" icon={faSun} />
