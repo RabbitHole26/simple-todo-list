@@ -5,12 +5,12 @@ import { useItemsContext } from "../../context/ItemsContext"
 import { useThemeContext } from "../../context/ThemeContext"
 import { useErrorContext } from "../../context/ErrorContext"
 import { useRefContext } from "../../context/RefContext"
+import { useListContext } from "../../context/ListContext"
 import { Button } from '../StyledComponents/Button'
 import useHandleAddItem from "../Handlers/use-handle-add-item"
 import useHandleActionItem from "../Handlers/use-handle-action-item"
 import useHandleDelete from "../Handlers/use-handle-delete-item"
 import './Styles.css'
-import { useListContext } from "../../context/ListContext"
 
 const TodoList = () => {
   // state variables
@@ -50,19 +50,19 @@ const TodoList = () => {
   return (
     <div className="flex flex-col md:items-center m-3 gap-5 pt-10 sm:p-10">
 
-      {/* to-do item form with input and button */}
+      {/* title and fruit button */}
       <div className="flex justify-center items-center mb-4 gap-3">
-        <h2 className='text-2xl text-center sm:text-4xl'>Simple To-Do list</h2>
-        <button type="button" onClick={toggleList} className="bg-transparent text-2xl sm:text-3xl">
+        <h2 className='text-3xl text-center sm:text-4xl'>Simple To-Do list</h2>
+        <button type="button" onClick={toggleList} className={`btn-square text-3xl sm:text-4xl rounded-md ${isDarkMode ? 'bg-transparent' : 'bg-neutral-500'}`}>
             {altListActive
-              ? <span>🍓</span>
-              : <span>🍌</span>
+              ? <div className="py-[3px]">🍓</div>
+              : <div className="py-[3px]">🍌</div>
             }
         </button>
       </div>
+
+      {/* form */}
       <form className="flex flex-col sm:flex-row items-center gap-3 sm:gap-2 mb-5" action="">
-
-
           <input
             id="input"
             type="text"
@@ -73,8 +73,6 @@ const TodoList = () => {
             onChange={handleInputChange}
             autoFocus
           />
-
-
           <Button
             $primary
             disabled={error}
@@ -83,7 +81,6 @@ const TodoList = () => {
           >
             Add Item
           </Button>
-
       </form>
 
       <div className="max-w-full relative">
