@@ -19,7 +19,9 @@ const About = () => {
               <li>add tasks</li>
               <li>remove tasks</li>
               <li>mark tasks as completed</li>
-              <li>export to-do list to a JSON file</li>
+              <li>use two independent lists</li>
+              <li>toggle between different task list layouts</li>
+              {/* <li>export to-do list to a JSON file</li> */}
             </ul>
           </div>
           <p>
@@ -29,7 +31,7 @@ const About = () => {
             Whether you&rsquo;re managing your daily chores or shopping lists, this To-Do list application is designed to streamline your task management process.
           </p>
         </div>
-        <div className='flex flex-col gap-5 pb-[120px]'>
+        <div className='flex flex-col-reverse gap-5 pb-[120px]'>
           <Button className='lightModeButtonTextColor'>
             <a
               href="mailto:derivatives_four@protonmail.com?subject=To-Do%20app%20feedback"

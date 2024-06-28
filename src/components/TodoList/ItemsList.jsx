@@ -30,8 +30,8 @@ const ItemsList = () => {
     })
   }
 
-    // conditions
-    const {hideLayoutButton, isLayoutGrid} = useConditions()
+  // conditions
+  const {hideLayoutButton, isLayoutGrid} = useConditions()
 
   return (
     <div className="max-w-full mx-3 md:mx-[10%] relative">
