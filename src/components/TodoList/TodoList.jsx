@@ -91,10 +91,10 @@ const TodoList = () => {
                 </p>
 
                 <div className="listItemControls lightModeButtonTextColor flex gap-6 sm:mb-1 p-2 rounded-md">
-                  <button className="flex items-center" onClick={() => handleActionItem(item.id)} >
+                  <button className="flex w-[24px]" onClick={() => handleActionItem(item.id)} >
                     {item.isLineThrough
-                      ? <FontAwesomeIcon className="text-2xl faCheckmarkCustom faCustomHover" icon={faRotateLeft} />
-                      : <FontAwesomeIcon className="text-2xl faCheckmarkCustom faCustomHover" icon={faCheck} />
+                      ? <FontAwesomeIcon className="text-2xl active:scale-[0.8] faCheckmarkCustom faCustomHover" icon={faRotateLeft} />
+                      : <FontAwesomeIcon className="text-2xl active:scale-[0.8] faCheckmarkCustom faCustomHover" icon={faCheck} />
                     }
                   </button>
                   <button className="flex items-center" onClick={() => handleDeleteItem(item.id)}>

@@ -29,7 +29,6 @@
   transition: var(--transition-custom);
 
   &:active {
-    transform: scale(0.8) !important;
     transition: var(--transition-custom);
   }
 }
@@ -63,6 +62,24 @@
 
     &:hover {
       background-color: var(--list-item-checked);
+    }
+  }
+
+  .faCheckmarkCustom {
+    transition: var(--transition-custom);
+  
+    &:active {
+      transform: scale(1) !important;
+      transition: var(--transition-custom);
+    }
+  }
+
+  .faCustomHover {
+    transition: var(--transition-custom);
+  
+    &:hover {
+      transform: scale(1);
+      transition: var(--transition-custom);
     }
   }
 }
