@@ -17,7 +17,8 @@ const QuoteGenerator = () => {
   async function fetchRandomQuote () {
     try {
         // ! prevenet issues caused by browser caching by assigning randomFactor as a string parameter to the fetch call
-        // * with the randomFactor concatenated into the string browser recognizes each fetch request as a new request. If the fetch url stays static with each call some browsers may serve the response for the initial calls to all subsequent calls
+        // * with the randomFactor concatenated into the string browser recognizes each fetch request as a new request. 
+        // * if the fetch url stays static with each call some browsers may serve the response for the initial calls to all subsequent calls
       const response = await fetch(corsProxyUrl + fetchUrl + '?' + randomFactor)
       if (!response.ok)
         throw new Error('Failed to fetch a random quote.')
@@ -62,7 +63,7 @@ const QuoteGenerator = () => {
   
   return (
     <>
-      <div className={`lightModeBorderBottom flex flex-col items-center m-3 mt-0 md:mx-[10%] gap-5 border-b p-10`}>
+      <div className={`lightModeBorderBottom flex flex-col items-center mx-3 md:mx-10 gap-5 border-b p-10`}>
         <h2 className='hidden sm:block sm:text-2xl'>Quote of the day!</h2>
         {renderContent}
         <Button $primary className="hidden lightModeButtonTextColor sm:block" onClick={handleClick}>New Quote</Button>

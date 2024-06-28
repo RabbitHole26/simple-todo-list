@@ -2,6 +2,11 @@
   border: 1px solid red !important;
 } */
 
+.gridCustom {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
 .lineThrough {
   text-decoration: line-through;
   opacity: 0.6;
@@ -9,14 +14,11 @@
 
 .listItem {
   background-color: var(--list-item-bg);
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px;
   transition: all 0.1s linear;
 
   &:hover {
     background-color: rgba(0, 128, 128, 0.9);
-    transform: scale(1.1);
+    transform: scale(1.03);
     transition: all 0.1s linear;
   }
 }
