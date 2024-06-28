@@ -4,15 +4,21 @@ import { Button } from "../StyledComponents/Button"
 import { useThemeContext } from '../../context/ThemeContext'
 import './Styles.css'
 
-const QuotableApi = () => {
-  const [data, setData] = useState({})
+const QuoteGenerator = () => {
+  const [data, setData] = useState([{ q: "", a: "" }])
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const {isDarkMode} = useThemeContext()
 
+  const corsProxyUrl = 'https://corsproxy.io/?'
+  const fetchUrl = 'https://zenquotes.io/api/random'
+  const randomFactor = Math.random()
+
   async function fetchRandomQuote () {
     try {
-      const response = await fetch('https://api.quotable.io/random')
+        // ! prevenet issues caused by browser caching by assigning randomFactor as a string parameter to the fetch call
+        // * with the randomFactor concatenated into the string browser recognizes each fetch request as a new request. If the fetch url stays static with each call some browsers may serve the response for the initial calls to all subsequent calls
+      const response = await fetch(corsProxyUrl + fetchUrl + '?' + randomFactor)
       if (!response.ok)
         throw new Error('Failed to fetch a random quote.')
       const quote = await response.json()
@@ -26,6 +32,7 @@ const QuotableApi = () => {
   
   useEffect(() => {
     fetchRandomQuote()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
   const handleClick = () => {
@@ -37,8 +44,8 @@ const QuotableApi = () => {
     error 
       ? <p>{error}</p> 
       : <ul id="textShadowColor" className="text-md sm:text-l">
-          <li>&quot;{data.content}&quot;</li>
-          <li>{data.author}</li>
+          <li>&quot;{data[0].q}&quot;</li>
+          <li>{data[0].a}</li>
         </ul>
 
   const renderContent =
@@ -64,4 +71,4 @@ const QuotableApi = () => {
   )
 }
 
-export default QuotableApi
+export default QuoteGenerator

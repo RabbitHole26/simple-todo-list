@@ -8,7 +8,7 @@ const ItemsContext = createContext()
 const ItemsProvider = ({children}) => {
   const [items, setItems] = useState(setInitialState(
     'items', 
-    [[createTask('banana so good!')], [createTask('strawbery is yummy!')]]
+    [[createTask('banana... soo good!')], [createTask('strawberry... yummy!')]]
   ))
 
   useLocalStorage('items', items)

@@ -1,10 +1,10 @@
-import QuotableApi from "../../components/QuotableApi/QuotableApi"
+import QuoteGenerator from "../../components/QuoteGenerator/QuoteGenerator"
 import TodoList from "../../components/TodoList/TodoList"
 
 const HomePage = () => {
   return (
     <div>
-      <QuotableApi />
+      <QuoteGenerator />
       <TodoList />
     </div>
   )

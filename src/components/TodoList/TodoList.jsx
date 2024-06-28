@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faCheck, faRotateLeft } from '@fortawesome/free-solid-svg-icons'
 import { useItemsContext } from "../../context/ItemsContext"
@@ -25,10 +25,6 @@ const TodoList = () => {
   /*
   ** HANDLERS
   */
-
-  useEffect(() => {
-    console.log(items)
-  }, [items])
 
   const {handleActionItem} = useHandleActionItem()
 
