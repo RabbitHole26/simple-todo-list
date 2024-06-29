@@ -12,10 +12,14 @@ const ItemsList = () => {
   const {isDarkMode} = useThemeContext()
   const {items} = useItemsContext()
   const {
-    altListActive, 
+    isAltListActive, 
     isListLayoutGrid, 
     setIsListLayoutGrid
   } = useListContext()
+
+  // define items array
+
+  const listIndex = isAltListActive ? 1 : 0
 
   // handlers
   const {handleActionItem} = useHandleActionItem()
@@ -25,7 +29,7 @@ const ItemsList = () => {
   const toggleListLayout = () => {
     setIsListLayoutGrid(prev => {
       const updatedValues = [...prev]
-      updatedValues[altListActive ? 1 : 0] = !isListLayoutGrid[altListActive ? 1: 0]
+      updatedValues[listIndex] = !isListLayoutGrid[listIndex]
       return updatedValues
     })
   }
@@ -46,7 +50,7 @@ const ItemsList = () => {
 
       {/* to-do item list */}
       <ul className={`pb-[100px] gap-4 ${isLayoutGrid ? 'gridCustom' : 'flex flex-col items-center'}`}>
-        {items[altListActive ? 1 : 0].map((item) => (
+        {items[listIndex].map((item) => (
           <li className={`text-lg rounded-md sm:text-xl listItem ${item.isLineThrough ? 'listItemChecked' : ''} ${isLayoutGrid ? '' : 'min-w-[350px]'}`} key={item.id}>
             <div className={`lightModeSpecialList h-full flex flex-col p-2 gap-4 items-center justify-between`}>
               <p className={`max-w-full break-words ${item.isLineThrough ? 'lineThrough' : ''}`}>

@@ -4,13 +4,16 @@ import setInitialState from "../utils/set-initial-state";
 const ListContext = createContext()
 
 const ListProvider = ({children}) => {
-  const [altListActive, setAltListActive] = useState(false)
-  const [isListLayoutGrid, setIsListLayoutGrid] = useState(setInitialState('isListLayoutGrid', [false, false]))
+  const [isAltListActive, setIsAltListActive] = useState(false)
+  const [isListLayoutGrid, setIsListLayoutGrid] = useState(setInitialState(
+    'isListLayoutGrid', 
+    [false, false]
+  ))
 
   return (
     <ListContext.Provider value={{
-      altListActive,
-      setAltListActive,
+      isAltListActive,
+      setIsAltListActive,
       isListLayoutGrid,
       setIsListLayoutGrid
     }}>

@@ -15,8 +15,8 @@ const TodoList = () => {
   const {error} = useErrorContext()
   const {isDarkMode} = useThemeContext()
   const {
-    altListActive, 
-    setAltListActive,
+    isAltListActive, 
+    setIsAltListActive,
     isListLayoutGrid,
   } = useListContext()
 
@@ -34,7 +34,7 @@ const TodoList = () => {
   }
 
   const toggleList = () => {
-    setAltListActive(prev => !prev)
+    setIsAltListActive(prev => !prev)
   }
 
   // local storage
@@ -48,7 +48,7 @@ const TodoList = () => {
       <div className="flex justify-center items-center mb-4 gap-3">
         <h2 className='text-3xl text-center sm:text-4xl'>Simple To-Do list</h2>
         <button type="button" onClick={toggleList} className={`btn-square text-3xl sm:text-4xl rounded-md ${isDarkMode ? 'bg-transparent' : 'bg-neutral-500'}`}>
-            {altListActive
+            {isAltListActive
               ? <div className="py-[3px]">🍓</div>
               : <div className="py-[3px]">🍌</div>
             }
