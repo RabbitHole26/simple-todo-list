@@ -2,7 +2,8 @@ import { useThemeContext } from '../../context/ThemeContext'
 import { useItemsContext } from '../../context/ItemsContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useListContext } from '../../context/ListContext'
-import { faTrash, faCheck, faRotateLeft, faGripVertical, faListUl } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faCheck, faRotateLeft } from '@fortawesome/free-solid-svg-icons'
+import { grid, list } from '../../assets/Svgs'
 import useHandleActionItem from '../Handlers/use-handle-action-item'
 import useHandleDeleteItem from '../Handlers/use-handle-delete-item'
 import useConditions from './useConditions'
@@ -18,7 +19,6 @@ const ItemsList = () => {
   } = useListContext()
 
   // define items array
-
   const listIndex = isAltListActive ? 1 : 0
 
   // handlers
@@ -42,8 +42,8 @@ const ItemsList = () => {
       {!hideLayoutButton &&
         <button onClick={toggleListLayout} className={`absolute hidden btn-circle btn-sm z-30 m-1 sm:flex justify-center items-center ${isDarkMode ? 'bg-red-500' : 'bg-red-300'}`}>
           {isLayoutGrid
-            ? <FontAwesomeIcon icon={faListUl} />
-            : <FontAwesomeIcon icon={faGripVertical} /> 
+            ? grid
+            : list
           }
         </button>
       }
