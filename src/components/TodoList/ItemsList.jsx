@@ -11,7 +11,6 @@ const ItemsList = () => {
 
   // conditions
   const {
-    // hideLayoutButton, 
     isLayoutGrid, 
     listIndex
   } = useConditions()
