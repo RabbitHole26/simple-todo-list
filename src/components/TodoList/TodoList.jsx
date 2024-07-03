@@ -7,8 +7,12 @@ import useHandleAddItem from "../Handlers/use-handle-add-item"
 import useLocalStorage from "../../utils/useLocalStorage"
 import ButtonToggleList from "../Buttons/ButtonToggleList"
 import ButtonStyled from "../Buttons/ButtonStyled"
+import ButtonToggleListLayout from "../Buttons/ButtonToggleListLayout"
 import ItemsList from "./ItemsList"
+import useConditions from "../../utils/useConditions"
 import './Styles.css'
+
+import useToggleListLayout from '../Handlers/use-toggle-list-layout'
 
 const TodoList = () => {
   // state variables
@@ -21,6 +25,9 @@ const TodoList = () => {
   } = useListContext()
 
   const inputRef = useRefContext()
+
+  // conditions
+  const {hideLayoutButton} = useConditions()
 
   // handlers
   const {handleAddItem} = useHandleAddItem({
@@ -36,6 +43,8 @@ const TodoList = () => {
     setIsAltListActive(prev => !prev)
   }
 
+  const {toggleListLayout} = useToggleListLayout()
+
   // local storage
   useLocalStorage('isListLayoutGrid', isListLayoutGrid)
 
@@ -50,6 +59,9 @@ const TodoList = () => {
 
       {/* form */}
       <form className="flex flex-col justify-center sm:flex-row items-center gap-3 sm:gap-2 mb-5" action="">
+          {!hideLayoutButton &&
+            <ButtonToggleListLayout className='hidden sm:flex' onClick={toggleListLayout} />
+          }
           <input
             id="input"
             type="text"

@@ -1,9 +1,7 @@
 import { useItemsContext } from '../../context/ItemsContext'
-import ButtonToggleListLayout from '../Buttons/ButtonToggleListLayout'
 import useHandleActionItem from '../Handlers/use-handle-action-item'
 import useHandleDeleteItem from '../Handlers/use-handle-delete-item'
 import useConditions from '../../utils/useConditions'
-import useToggleListLayout from '../Handlers/use-toggle-list-layout'
 import ButtonActionItem from '../Buttons/ButtonActionItem'
 import ButtonDeleteItem from '../Buttons/ButtonDeleteItem'
 
@@ -13,23 +11,17 @@ const ItemsList = () => {
 
   // conditions
   const {
-    hideLayoutButton, 
+    // hideLayoutButton, 
     isLayoutGrid, 
     listIndex
   } = useConditions()
 
   // handlers
   const {handleActionItem} = useHandleActionItem()
-
   const {handleDeleteItem} = useHandleDeleteItem()
 
-  const {toggleListLayout} = useToggleListLayout()
-
   return (
-    <div className="max-w-full mx-3 md:mx-[10%] relative">
-      {!hideLayoutButton &&
-        <ButtonToggleListLayout className='absolute hidden sm:flex' onClick={toggleListLayout} />
-      }
+    <div className="mx-3 md:mx-[10%] relative">
 
       {/* to-do item list */}
       <ul className={`pb-[100px] gap-4 ${isLayoutGrid ? 'gridCustom' : 'flex flex-col items-center'}`}>
@@ -37,7 +29,7 @@ const ItemsList = () => {
           <li 
             className={`text-lg rounded-md sm:text-xl listItem 
               ${item.isLineThrough ? 'listItemChecked' : ''} 
-              ${isLayoutGrid ? '' : 'min-w-[350px]'}`} 
+              ${isLayoutGrid ? '' : 'min-w-full max-w-full'}`} 
             key={item.id}
           >
             <div className={`lightModeSpecialList h-full flex flex-col p-2 gap-4 items-center justify-between`}>
