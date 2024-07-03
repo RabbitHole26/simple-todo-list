@@ -1,11 +1,9 @@
 import { useItemsContext } from "../../context/ItemsContext"
-import { useListContext } from "../../context/ListContext"
+import useConditions from "../../utils/useConditions"
 
 const useHandleDeleteItem = () => {
   const {setItems} = useItemsContext()
-  const {isAltListActive} = useListContext()
-  
-  const listIndex = isAltListActive ? 1 : 0
+  const {listIndex} = useConditions()
 
   const handleDeleteItem = (itemId) => {
     setItems(prev => {

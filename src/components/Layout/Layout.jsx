@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useErrorContext } from "../../context/ErrorContext";
 import { useThemeContext } from "../../context/ThemeContext";
 import Navbar from "../Navbar/Navbar";
-import { Button } from "../StyledComponents/Button";
 import useHandlErrorPopup from "../Handlers/use-handle-error-popup";
+import ButtonStyled from "../Buttons/ButtonStyled";
 
 const Layout = ({children}) => {
   const {isDarkMode} = useThemeContext()
@@ -21,7 +21,7 @@ const Layout = ({children}) => {
             <p className="text-center">
               You can&rsquo;t add duplicate or empty items.
             </p>
-            <Button className="lightModeButtonTextColor mx-[25%]" onClick={handleErrorPopup}>Ok</Button>
+            <ButtonStyled className="lightModeButtonTextColor mx-[25%]" onClick={handleErrorPopup}>Ok</ButtonStyled>
           </div>
         </div>
       }

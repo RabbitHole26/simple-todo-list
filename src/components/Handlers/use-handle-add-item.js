@@ -1,14 +1,12 @@
 import { useErrorContext } from "../../context/ErrorContext"
 import { useItemsContext } from "../../context/ItemsContext"
-import { useListContext } from "../../context/ListContext"
-import createTask from "./createTask"
+import createTask from "../../utils/createTask"
+import useConditions from "../../utils/useConditions"
 
 const useHandleAddItem = ({input, setInput}) => {
   const {items, setItems} = useItemsContext()
   const {setError} = useErrorContext()
-  const {isAltListActive} = useListContext()
-  
-  const listIndex = isAltListActive ? 1 : 0
+  const {listIndex} = useConditions()
 
   const handleAddItem = (event) => {
     event.preventDefault()

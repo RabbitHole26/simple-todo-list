@@ -1,5 +1,5 @@
-import { Button } from '../../components/StyledComponents/Button'
 import { Link } from 'react-router-dom'
+import ButtonStyled from '../../components/Buttons/ButtonStyled'
 import './About.css'
 
 const About = () => {
@@ -32,15 +32,17 @@ const About = () => {
           </p>
         </div>
         <div className='flex flex-col-reverse gap-5 pb-[120px]'>
-          <Button className='lightModeButtonTextColor'>
+          <ButtonStyled className='lightModeButtonTextColor'>
             <a
               href="mailto:derivatives_four@protonmail.com?subject=To-Do%20app%20feedback"
               >
                 Submit feedback
             </a>
-          </Button>
+          </ButtonStyled>
           <Link to='/'>
-            <Button $primary className='lightModeButtonTextColor'>Back to main page</Button>
+            <ButtonStyled $primary className='lightModeButtonTextColor'>
+              Back to main page
+            </ButtonStyled>
           </Link>
         </div>
       </div>

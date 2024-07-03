@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Button = styled.button`
+const ButtonStyled = styled.button`
   padding: 10px;
   border: 1px solid black;
   border-radius: 5px;
@@ -24,3 +24,5 @@ export const Button = styled.button`
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
   }
 `
+
+export default ButtonStyled

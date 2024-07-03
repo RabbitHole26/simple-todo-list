@@ -1,14 +1,12 @@
 import { useItemsContext } from "../../context/ItemsContext"
-import { useListContext } from "../../context/ListContext"
+import useConditions from "../../utils/useConditions"
 
 const useHandleActionItem = () => {
-  const { setItems } = useItemsContext()
-  const { isAltListActive } = useListContext()
+  const {setItems} = useItemsContext()
+  const {listIndex} = useConditions()
 
   const handleActionItem = (itemId) => {
     setItems(prev => {
-      const listIndex = isAltListActive ? 1 : 0
-
       // create a copy of the current items array
       const updatedItems = [...prev]
       

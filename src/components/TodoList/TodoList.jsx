@@ -3,9 +3,10 @@ import { useThemeContext } from "../../context/ThemeContext"
 import { useErrorContext } from "../../context/ErrorContext"
 import { useRefContext } from "../../context/RefContext"
 import { useListContext } from "../../context/ListContext"
-import { Button } from '../StyledComponents/Button'
 import useHandleAddItem from "../Handlers/use-handle-add-item"
 import useLocalStorage from "../../utils/useLocalStorage"
+import ButtonToggleList from "../Buttons/ButtonToggleList"
+import ButtonStyled from "../Buttons/ButtonStyled"
 import ItemsList from "./ItemsList"
 import './Styles.css'
 
@@ -15,15 +16,13 @@ const TodoList = () => {
   const {error} = useErrorContext()
   const {isDarkMode} = useThemeContext()
   const {
-    isAltListActive, 
     setIsAltListActive,
-    isListLayoutGrid,
+    isListLayoutGrid
   } = useListContext()
 
   const inputRef = useRefContext()
 
   // handlers
-
   const {handleAddItem} = useHandleAddItem({
     input, 
     setInput,
@@ -38,7 +37,6 @@ const TodoList = () => {
   }
 
   // local storage
-
   useLocalStorage('isListLayoutGrid', isListLayoutGrid)
 
   return (
@@ -47,12 +45,7 @@ const TodoList = () => {
       {/* title and fruit button */}
       <div className="flex justify-center items-center mb-4 gap-3">
         <h2 className='text-3xl text-center sm:text-4xl'>Simple To-Do list</h2>
-        <button type="button" onClick={toggleList} className={`btn-square text-3xl sm:text-4xl rounded-md ${isDarkMode ? 'bg-transparent' : 'bg-neutral-500'}`}>
-            {isAltListActive
-              ? <div className="py-[3px]">🍓</div>
-              : <div className="py-[3px]">🍌</div>
-            }
-        </button>
+        <ButtonToggleList onClick={toggleList} className={`${isDarkMode ? 'bg-transparent' : 'bg-neutral-500'}`} />
       </div>
 
       {/* form */}
@@ -67,14 +60,14 @@ const TodoList = () => {
             onChange={handleInputChange}
             autoFocus
           />
-          <Button
+          <ButtonStyled
             $primary
             disabled={error}
             className="lightModeButtonTextColor flex-auto max-w-[97px]"
             onClick={handleAddItem}
           >
             Add Item
-          </Button>
+          </ButtonStyled>
       </form>
     
       {/* item list */}

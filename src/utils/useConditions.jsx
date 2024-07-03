@@ -1,5 +1,5 @@
-import { useItemsContext } from "../../context/ItemsContext"
-import { useListContext } from "../../context/ListContext"
+import { useItemsContext } from "../context/ItemsContext"
+import { useListContext } from "../context/ListContext"
 
 const useConditions = () => {
   const {isAltListActive, isListLayoutGrid} = useListContext()
@@ -13,7 +13,9 @@ const useConditions = () => {
   const isAltLayoutGrid = isAltListActive && isListLayoutGrid[1]
   const isLayoutGrid = isMainLayoutGrid || isAltLayoutGrid
 
-  return {hideLayoutButton, isLayoutGrid}
+  const listIndex = isAltListActive ? 1 : 0
+
+  return {hideLayoutButton, isLayoutGrid, listIndex}
 }
 
 export default useConditions

@@ -1,3 +1,4 @@
+// TODO: this function needs to be refactored
 const exportDataToFile = (array, filename) => {
   const visibleItems = array.filter(item => item.isVisible)
   const visibleItemsJSON = visibleItems.map(item => ({

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { ClipLoader } from "react-spinners"
-import { Button } from "../StyledComponents/Button"
 import { useThemeContext } from '../../context/ThemeContext'
+import ButtonStyled from "../Buttons/ButtonStyled"
 import './Styles.css'
 
 const QuoteGenerator = () => {
@@ -66,7 +66,7 @@ const QuoteGenerator = () => {
       <div className={`lightModeBorderBottom flex flex-col items-center mx-3 md:mx-10 gap-5 border-b p-10`}>
         <h2 className='hidden sm:block sm:text-2xl'>Quote of the day!</h2>
         {renderContent}
-        <Button $primary className="hidden lightModeButtonTextColor sm:block" onClick={handleClick}>New Quote</Button>
+        <ButtonStyled $primary className="hidden lightModeButtonTextColor sm:block" onClick={handleClick}>New Quote</ButtonStyled>
       </div>
     </>
   )

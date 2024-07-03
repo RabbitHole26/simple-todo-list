@@ -1,4 +1,4 @@
-import Task from "../../classes/Task/Task"
+import Task from "../classes/Task/Task"
 
 function createTask(task) {
   return typeof task === 'string'
