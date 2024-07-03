@@ -1,0 +1,30 @@
+.ButtonToggleListLayout:hover {
+  scale: var(--scale-increase);
+  transition: var(--transition-ease-in-out);
+}
+
+.ButtonToggleList {
+  &:active {
+    rotate: 360deg;
+    transition: all 0.2s linear
+  }
+  &:hover {
+    scale: var(--scale-increase);
+  }
+}
+
+@media (hover: none) {
+  .ButtonToggleListLayout:hover {
+    scale: var(--scale-reset);
+  }
+
+  .ButtonToggleList {
+    &:active {
+      rotate: inherit;
+      transition: inherit;
+    }
+    &:hover {
+      scale: var(--scale-reset);
+    }
+  }
+}

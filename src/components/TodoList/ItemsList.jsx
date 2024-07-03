@@ -36,7 +36,7 @@ const ItemsList = () => {
                 {item.task.slice(0, 1).toUpperCase() + item.task.slice(1).toLowerCase()}
               </p>
 
-              <div className="listItemControls lightModeButtonTextColor flex gap-6 sm:mb-1 p-2 rounded-md">
+              <div className="listItemControls text-[rgb(240,240,240)] flex gap-6 sm:mb-1 p-2 rounded-md">
                 <ButtonActionItem onClick={() => handleActionItem(item.id)} item={item} />
                 <ButtonDeleteItem onClick={() => handleDeleteItem(item.id)} />
               </div>

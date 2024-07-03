@@ -21,7 +21,7 @@ const Layout = ({children}) => {
             <p className="text-center">
               You can&rsquo;t add duplicate or empty items.
             </p>
-            <ButtonStyled className="lightModeButtonTextColor mx-[25%]" onClick={handleErrorPopup}>Ok</ButtonStyled>
+            <ButtonStyled className="mx-[25%]" onClick={handleErrorPopup}>Ok</ButtonStyled>
           </div>
         </div>
       }

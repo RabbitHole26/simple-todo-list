@@ -10,7 +10,7 @@ import ButtonStyled from "../Buttons/ButtonStyled"
 import ButtonToggleListLayout from "../Buttons/ButtonToggleListLayout"
 import ItemsList from "./ItemsList"
 import useConditions from "../../utils/useConditions"
-import './Styles.css'
+import './TodoList.css'
 
 import useToggleListLayout from '../Handlers/use-toggle-list-layout'
 
@@ -75,7 +75,7 @@ const TodoList = () => {
           <ButtonStyled
             $primary
             disabled={error}
-            className="lightModeButtonTextColor flex-auto max-w-[97px]"
+            className="flex-auto max-w-[97px]"
             onClick={handleAddItem}
           >
             Add Item

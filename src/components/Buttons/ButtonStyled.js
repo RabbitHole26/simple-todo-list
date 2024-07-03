@@ -4,6 +4,7 @@ const ButtonStyled = styled.button`
   padding: 10px;
   border: 1px solid black;
   border-radius: 5px;
+  color: rgb(240, 240, 240);
   background-color:
     ${props => props.$primary
       ? 'rgb(0, 100, 100)'

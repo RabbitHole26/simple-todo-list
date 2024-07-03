@@ -10,7 +10,10 @@
   --list-item-bg: rgba(0, 128, 128, 0.5);
   --list-item-checked: rgba(0, 128, 128, 0.05);
   /* effects */
-  --transition-custom: transition: all 0.1s ease-in-out;
+  --transition-ease-in-out: all 0.1s ease-in-out;
+  --transition-linear: all 0.1s linear;
+  --scale-increase: 1.1;
+  --scale-reset: 1;
 }
 
 /* ! Light mode classes */
@@ -18,10 +21,6 @@
 .lightMode {
   background-color: var(--light-mode-bg);
   color: var(--light-mode-text);
-
-  .lightModeButtonTextColor {
-    color: var(--light-mode-primary);
-  }
 
   .lightModeBorder {
     border: 1px solid var(--light-mode-text);

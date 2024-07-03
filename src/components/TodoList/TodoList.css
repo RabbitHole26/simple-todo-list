@@ -14,12 +14,12 @@
 
 .listItem {
   background-color: var(--list-item-bg);
-  transition: all 0.1s linear;
+  transition: var(--transition-linear);
 
   &:hover {
     background-color: rgba(0, 128, 128, 0.9);
     transform: scale(1.03);
-    transition: all 0.1s linear;
+    transition: var(--transition-linear);
   }
 }
 
@@ -28,19 +28,19 @@
 }
 
 .faCheckmarkCustom {
-  transition: var(--transition-custom);
+  transition: var(--transtion-ease-in-out);
 
   &:active {
-    transition: var(--transition-custom);
+    transition: var(--transtion-ease-in-out);
   }
 }
 
 .faCustomHover {
-  transition: var(--transition-custom);
+  transition: var(--transtion-ease-in-out);
 
   &:hover {
-    transform: scale(1.1);
-    transition: var(--transition-custom);
+    transform: scale(var(--scale-increase));
+    transition: var(--transtion-ease-in-out);
   }
 }
 
@@ -68,20 +68,20 @@
   }
 
   .faCheckmarkCustom {
-    transition: var(--transition-custom);
+    transition: var(--transtion-ease-in-out);
   
     &:active {
-      transform: scale(1) !important;
-      transition: var(--transition-custom);
+      transform: scale(var(--scale-reset)) !important;
+      transition: var(--transtion-ease-in-out);
     }
   }
 
   .faCustomHover {
-    transition: var(--transition-custom);
+    transition: var(--transtion-ease-in-out);
   
     &:hover {
-      transform: scale(1);
-      transition: var(--transition-custom);
+      transform: scale(var(--scale-reset));
+      transition: var(--transtion-ease-in-out);
     }
   }
 }

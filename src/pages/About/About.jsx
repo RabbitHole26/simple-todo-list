@@ -32,7 +32,7 @@ const About = () => {
           </p>
         </div>
         <div className='flex flex-col-reverse gap-5 pb-[120px]'>
-          <ButtonStyled className='lightModeButtonTextColor'>
+          <ButtonStyled>
             <a
               href="mailto:derivatives_four@protonmail.com?subject=To-Do%20app%20feedback"
               >
@@ -40,7 +40,7 @@ const About = () => {
             </a>
           </ButtonStyled>
           <Link to='/'>
-            <ButtonStyled $primary className='lightModeButtonTextColor'>
+            <ButtonStyled $primary>
               Back to main page
             </ButtonStyled>
           </Link>
