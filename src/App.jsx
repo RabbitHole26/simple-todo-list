@@ -1,4 +1,3 @@
-// import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './context/ThemeContext'
 import { ItemsProvider } from './context/ItemsContext'

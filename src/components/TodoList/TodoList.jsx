@@ -9,7 +9,6 @@ import ButtonToggleList from "../Buttons/ButtonToggleList"
 import ButtonStyled from "../Buttons/ButtonStyled"
 import ButtonToggleListLayout from "../Buttons/ButtonToggleListLayout"
 import ItemsList from "./ItemsList"
-import useConditions from "../../utils/useConditions"
 import './TodoList.css'
 
 import useToggleListLayout from '../Handlers/use-toggle-list-layout'
@@ -25,9 +24,6 @@ const TodoList = () => {
   } = useListContext()
 
   const inputRef = useRefContext()
-
-  // conditions
-  const {hideLayoutButton} = useConditions()
 
   // handlers
   const {handleAddItem} = useHandleAddItem({
@@ -59,9 +55,8 @@ const TodoList = () => {
 
       {/* form */}
       <form className="flex flex-col justify-center sm:flex-row items-center gap-3 sm:gap-2 mb-5" action="">
-          {!hideLayoutButton &&
-            <ButtonToggleListLayout className='hidden sm:flex' onClick={toggleListLayout} />
-          }
+          <ButtonToggleListLayout className='hidden sm:flex' onClick={toggleListLayout} />
+          
           <input
             id="input"
             type="text"
@@ -70,12 +65,13 @@ const TodoList = () => {
             disabled={error}
             className={`h-10 rounded-md p-2 flex-auto max-w-[264px] ${isDarkMode ? 'bg-black' : 'bg-neutral-100'}`}
             onChange={handleInputChange}
+            placeholder="Task name..."
             autoFocus
           />
           <ButtonStyled
             $primary
             disabled={error}
-            className="flex-auto max-w-[97px]"
+            className="hidden sm:flex max-w-[97px]"
             onClick={handleAddItem}
           >
             Add Item
