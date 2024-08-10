@@ -16,7 +16,7 @@ const QuoteGenerator = () => {
 
   async function fetchRandomQuote () {
     try {
-        // ! prevenet issues caused by browser caching by assigning randomFactor as a string parameter to the fetch call
+        // ! prevent issues caused by browser caching by assigning randomFactor as a string parameter to the fetch call
         // * with the randomFactor concatenated into the string browser recognizes each fetch request as a new request. 
         // * if the fetch url stays static with each call some browsers may serve the response for the initial calls to all subsequent calls
       const response = await fetch(corsProxyUrl + fetchUrl + '?' + randomFactor)
