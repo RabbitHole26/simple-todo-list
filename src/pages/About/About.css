@@ -1,3 +1,7 @@
 #textShadowColorAbout {
   text-shadow: 1px 1px 3px red
 }
+
+.buttonWrapper {
+  box-shadow: 0 0 15px 5px var(--box-shadow)
+}

@@ -1,11 +1,14 @@
+import { useThemeContext } from '../../context/ThemeContext'
 import { Link } from 'react-router-dom'
 import ButtonStyled from '../../components/Buttons/ButtonStyled'
 import './About.css'
 
 const About = () => {
+  const {isDarkMode} = useThemeContext()
+
   return (
     <div className={`flex flex-col items-center`}>
-      <div className="flex flex-col flex-grow gap-[50px] p-5 max-w-[600px] xl:max-w-[1000px] items-center md:mt-[50px]">
+      <div className="flex flex-col flex-grow gap-[50px] p-5 pb-20 max-w-[600px] xl:max-w-[1000px] items-center md:mt-[50px]">
         <h1 className="text-3xl xl:text-4xl mt-10">
           Hello there! 👋
         </h1>
@@ -31,17 +34,17 @@ const About = () => {
             Whether you&rsquo;re managing your daily chores or shopping lists, this To-Do list application is designed to streamline your task management process.
           </p>
         </div>
-        <div className='flex flex-col-reverse gap-5 pb-[120px]'>
-          <ButtonStyled>
+        <div className={`buttonWrapper sticky rounded-md bottom-0 flex flex-row-reverse gap-5 p-3 ${isDarkMode ? 'bg-stone-800' : 'bg-neutral-400'}`}>
+          <ButtonStyled $width>
             <a
               href="mailto:derivatives_four@protonmail.com?subject=To-Do%20app%20feedback"
               >
-                Submit feedback
+                Feedback
             </a>
           </ButtonStyled>
           <Link to='/'>
-            <ButtonStyled $primary>
-              Back to main page
+            <ButtonStyled $primary $width>
+              Home page
             </ButtonStyled>
           </Link>
         </div>
