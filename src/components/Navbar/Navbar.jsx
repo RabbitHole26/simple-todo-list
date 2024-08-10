@@ -5,6 +5,7 @@ import { useErrorContext } from "../../context/ErrorContext"
 // import { exportDataToFile } from "../../utils/handle-data"
 import daisyUiRemoveFocus from "../../utils/daisyUi-remove-focus"
 import ButtonToggleTheme from "../Buttons/ButtonToggleTheme"
+import ButtonToggleQuote from "../Buttons/ButtonToggleQuote"
 
 const Navbar = () => {
   const {isDarkMode} = useThemeContext()
@@ -18,7 +19,8 @@ const Navbar = () => {
 
   return (
     <nav className={`flex flex-row-reverse sticky justify-between top-0 z-50 ${isDarkMode ? 'bg-stone-800 text-white' : 'bg-neutral-400 text-black'} ${error ? 'opacity-20' : 'opacity100'}`}>
-      <div>
+      <div className="flex items-center gap-2">
+        <ButtonToggleQuote />
         <ButtonToggleTheme />
       </div>
       <div className="flex">
