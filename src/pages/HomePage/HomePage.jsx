@@ -1,10 +1,15 @@
+import { useQuoteContext } from "../../context/QuoteContext"
 import QuoteGenerator from "../../components/QuoteGenerator/QuoteGenerator"
 import TodoList from "../../components/TodoList/TodoList"
 
 const HomePage = () => {
+  const {showQuote} = useQuoteContext()
+
   return (
     <div>
-      <QuoteGenerator />
+      {showQuote &&
+        <QuoteGenerator />
+      }
       <TodoList />
     </div>
   )
