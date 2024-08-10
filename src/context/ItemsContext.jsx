@@ -9,8 +9,8 @@ const ItemsProvider = ({children}) => {
   const [items, setItems] = useState(setInitialState(
     'items', 
     [
-      [createTask('banana... soo good!')], 
-      [createTask('strawberry... yummy!')]
+      [createTask('This is the primary list, click/tap the 🍌 to see the alternative list!')], 
+      [createTask('This is the alternative list, click/tap the 🍓 to see the primary list!')]
     ]
   ))
 
