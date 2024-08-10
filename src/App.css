@@ -1,14 +1,17 @@
 /* ! global CSS variables */
 
 :root {
-  /* light mode colors */
+  /* colors */
   --light-mode-primary: rgb(240, 240, 240);
   --light-mode-input: rgb(230, 230, 230);
   --light-mode-bg: rgb(210, 210, 210);
   --light-mode-text: rgb(35, 35, 35);
-  /* colors */
   --list-item-bg: rgba(0, 128, 128, 0.5);
-  --list-item-checked: rgba(0, 128, 128, 0.05);
+  --list-item-hover-bg: rgba(0, 128, 128, 0.9);
+  --list-item-checked-bg: rgba(0, 128, 128, 0.05);
+  --list-item-controls-bg: rgb(0, 65, 65);
+  --box-shadow: rgb(90, 90, 90);
+
   /* effects */
   --transition-ease-in-out: all 0.1s ease-in-out;
   --transition-linear: all 0.1s linear;
