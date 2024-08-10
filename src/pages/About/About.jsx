@@ -1,5 +1,6 @@
 import { useThemeContext } from '../../context/ThemeContext'
 import { Link } from 'react-router-dom'
+import { isMobile } from 'react-device-detect'
 import ButtonStyled from '../../components/Buttons/ButtonStyled'
 import './About.css'
 
@@ -23,7 +24,9 @@ const About = () => {
               <li>remove tasks</li>
               <li>mark tasks as completed</li>
               <li>use two independent lists</li>
-              <li>toggle between different task list layouts</li>
+              {!isMobile &&
+                <li>toggle between different task list layouts (desktop only)</li>
+              }
               {/* <li>export to-do list to a JSON file</li> */}
             </ul>
           </div>
