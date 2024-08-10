@@ -1,3 +1,5 @@
+import plugin from "tailwindcss/plugin"
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -22,7 +24,12 @@ export default {
       }
     }
   },
-  plugins: [require("daisyui")],
+  plugins: [
+    require("daisyui"),
+    plugin(({ addVariant }) => {
+      addVariant("has-hover", "@media (hover: hover) and (pointer: fine)")
+    }),
+  ],
   daisyui: {
     themes: ['dracula']
   }

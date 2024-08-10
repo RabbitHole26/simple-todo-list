@@ -31,16 +31,15 @@ const ItemsList = () => {
               ${isLayoutGrid ? '' : 'min-w-full max-w-full'}`} 
             key={item.id}
           >
-            <div className={`lightModeSpecialList h-full flex flex-col p-2 gap-4 items-center justify-between`}>
+            <div className="h-full flex flex-col p-2 gap-4 items-center justify-between has-hover:hover:text-white">
               <p className={`max-w-full break-words ${item.isLineThrough ? 'lineThrough' : ''}`}>
                 {item.task.slice(0, 1).toUpperCase() + item.task.slice(1).toLowerCase()}
               </p>
 
-              <div className="listItemControls text-[rgb(240,240,240)] flex gap-6 sm:mb-1 p-2 rounded-md">
+              <div className="listItemControls flex gap-6 sm:mb-1 p-2 rounded-md">
                 <ButtonActionItem onClick={() => handleActionItem(item.id)} item={item} />
                 <ButtonDeleteItem onClick={() => handleDeleteItem(item.id)} />
               </div>
-
             </div>
           </li>
         ))}
