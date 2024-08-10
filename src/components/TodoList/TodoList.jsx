@@ -50,7 +50,7 @@ const TodoList = () => {
       {/* title and fruit button */}
       <div className="flex justify-center items-center mb-4 gap-3">
         <h2 className='text-3xl text-center sm:text-4xl'>Simple To-Do list</h2>
-        <ButtonToggleList onClick={toggleList} className={`${isDarkMode ? 'bg-transparent' : 'bg-neutral-500'}`} />
+        <ButtonToggleList onClick={toggleList} className={`${isDarkMode ? 'bg-neutral-600' : 'bg-neutral-500'}`} />
       </div>
 
       {/* form */}
