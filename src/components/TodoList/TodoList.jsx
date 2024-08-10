@@ -3,15 +3,15 @@ import { useThemeContext } from "../../context/ThemeContext"
 import { useErrorContext } from "../../context/ErrorContext"
 import { useRefContext } from "../../context/RefContext"
 import { useListContext } from "../../context/ListContext"
+import { isMobile } from "react-device-detect"
 import useHandleAddItem from "../Handlers/use-handle-add-item"
 import useLocalStorage from "../../utils/useLocalStorage"
+import useToggleListLayout from '../Handlers/use-toggle-list-layout'
 import ButtonToggleList from "../Buttons/ButtonToggleList"
 import ButtonStyled from "../Buttons/ButtonStyled"
 import ButtonToggleListLayout from "../Buttons/ButtonToggleListLayout"
 import ItemsList from "./ItemsList"
 import './TodoList.css'
-
-import useToggleListLayout from '../Handlers/use-toggle-list-layout'
 
 const TodoList = () => {
   // state variables
@@ -71,7 +71,7 @@ const TodoList = () => {
           <ButtonStyled
             $primary
             disabled={error}
-            className="hidden sm:flex max-w-[97px]"
+            className={`${isMobile ? 'hidden' : ''} sm:flex max-w-[97px]`}
             onClick={handleAddItem}
           >
             Add Item
