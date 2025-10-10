@@ -5,7 +5,7 @@ import { useRefContext } from "../../context/RefContext"
 import { useListContext } from "../../context/ListContext"
 import { useQuoteContext } from "../../context/QuoteContext"
 import { isMobile } from "react-device-detect"
-import useHandleAddItem from "../../hooks/handlers/useHandleActionItem"
+import useHandleAddItem from "../../hooks/handlers/useHandleAddItem"
 import useLocalStorage from "../../hooks/useLocalStorage"
 import useToggleListLayout from '../../hooks/handlers/useToggleListLayout'
 import QuoteGenerator from "../../components/QuoteGenerator/QuoteGenerator"
