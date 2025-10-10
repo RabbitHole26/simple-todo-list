@@ -1,6 +1,6 @@
 import { gridIcon, listIcon } from "../../assets/Svgs"
 import { useThemeContext } from "../../context/ThemeContext"
-import useConditions from "../../utils/useConditions"
+import useConditions from "../../hooks/useConditions"
 import './Buttons.css'
 
 const ButtonToggleListLayout = ({onClick, className, type = 'button'}) => {

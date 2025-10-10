@@ -27,6 +27,17 @@
   background-color: var(--list-item-checked-bg);
 }
 
+.listItemFavorite {
+  background-color: var(--list-item-favorite-bg);
+  transition: var(--transition-linear);
+
+  &:hover {
+    background-color: var(--list-item-favorite-hover-bg);
+    transform: scale(1.03);
+    transition: var(--transition-linear);
+  }
+}
+
 .faCheckmarkCustom {
   transition: var(--transition-ease-in-out);
 
@@ -57,7 +68,13 @@
   .listItem:hover {
     background-color: var(--list-item-bg);
     transform: inherit;
-    transition: inherit;
+    transition: var(--transition-linear);
+  }
+
+  .listItemFavorite:hover {
+    background-color: var(--list-item-favorite-bg);
+    transform: inherit;
+    transition: var(--transition-linear);
   }
 
   .listItemChecked {

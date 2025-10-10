@@ -1,6 +1,6 @@
 // ! https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API
 
-const CACHE_NAME = "simple-todo-list-cache-v1" // versioning forces cache refresh on deploy
+const CACHE_NAME = "simple-todo-list-cache-v2" // versioning forces cache refresh on deploy
 
 /*
 ** INSTALLATION

@@ -1,6 +1,6 @@
 import { createContext, useState, useContext } from "react";
 import setInitialState from "../utils/set-initial-state";
-import useLocalStorage from "../utils/useLocalStorage";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const ThemeContext = createContext()
 

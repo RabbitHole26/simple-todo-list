@@ -1,5 +1,5 @@
 import { useItemsContext } from "../../context/ItemsContext"
-import useConditions from "../../utils/useConditions"
+import useConditions from "../useConditions"
 
 const useHandleDeleteItem = () => {
   const {setItems} = useItemsContext()

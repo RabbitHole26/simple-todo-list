@@ -7,7 +7,7 @@ import { ListProvider } from './context/ListContext'
 import { QuoteProvider } from './context/QuoteContext'
 import HomePage from './pages/HomePage/HomePage'
 import About from './pages/About/About'
-import Layout from './components/Layout/Layout'
+import Layout from './Layout/Layout'
 import './App.css'
 
 

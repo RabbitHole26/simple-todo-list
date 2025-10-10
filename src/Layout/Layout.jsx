@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useErrorContext } from "../../context/ErrorContext";
-import { useThemeContext } from "../../context/ThemeContext";
-import Navbar from "../Navbar/Navbar";
-import useHandlErrorPopup from "../Handlers/use-handle-error-popup";
-import ButtonStyled from "../Buttons/ButtonStyled";
+import { useErrorContext } from "../context/ErrorContext";
+import { useThemeContext } from "../context/ThemeContext";
+import Navbar from "../components/Navbar/Navbar";
+import useHandlErrorPopup from "../hooks/handlers/useHandleErrorPopup";
+import ButtonStyled from "../components/Buttons/ButtonStyled";
 
 const Layout = ({children}) => {
   const {isDarkMode} = useThemeContext()
