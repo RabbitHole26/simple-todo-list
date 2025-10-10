@@ -1,5 +1,5 @@
 import { useListContext } from "../../context/ListContext"
-import useConditions from "../../utils/useConditions"
+import useConditions from "../useConditions"
 
 const useToggleListLayout = () => {
   const {listIndex} = useConditions()

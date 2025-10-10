@@ -5,7 +5,7 @@ import ButtonStyled from "../Buttons/ButtonStyled"
 import './Styles.css'
 
 const QuoteGenerator = () => {
-  const [data, setData] = useState([{ q: "", a: "" }])
+  const [data, setData] = useState({ q: "", a: "" })
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const {isDarkMode} = useThemeContext()
@@ -23,7 +23,7 @@ const QuoteGenerator = () => {
       if (!response.ok)
         throw new Error('Failed to fetch a random quote.')
       const quote = await response.json()
-      setData(quote)
+      setData(quote[0])
     } catch (error) {
       setError(error.message)
     } finally {
@@ -45,8 +45,8 @@ const QuoteGenerator = () => {
     error 
       ? <p>{error}</p> 
       : <ul id="textShadowColor" className="text-md sm:text-l">
-          <li>&quot;{data[0].q}&quot;</li>
-          <li>{data[0].a}</li>
+          <li>&quot;{data.q}&quot;</li>
+          <li>{data.a}</li>
         </ul>
 
   const renderContent =

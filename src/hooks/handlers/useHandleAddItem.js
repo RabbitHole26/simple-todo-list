@@ -1,7 +1,7 @@
 import { useErrorContext } from "../../context/ErrorContext"
 import { useItemsContext } from "../../context/ItemsContext"
-import createTask from "../../utils/createTask"
-import useConditions from "../../utils/useConditions"
+import createTask from "../../utils/create-task"
+import useConditions from "../useConditions"
 
 const useHandleAddItem = ({input, setInput}) => {
   const {items, setItems} = useItemsContext()
