@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { ClipLoader } from "react-spinners"
 import { useThemeContext } from '../../context/ThemeContext'
+import { useQuoteContext } from "../../context/QuoteContext"
 import ButtonStyled from "../Buttons/ButtonStyled"
 import './Styles.css'
 
@@ -9,6 +10,7 @@ const QuoteGenerator = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const {isDarkMode} = useThemeContext()
+  const {showQuote} = useQuoteContext()
 
   const corsProxyUrl = 'https://corsproxy.io/?'
   const fetchUrl = 'https://zenquotes.io/api/random'
@@ -32,7 +34,7 @@ const QuoteGenerator = () => {
   }
   
   useEffect(() => {
-    fetchRandomQuote()
+    showQuote && fetchRandomQuote()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
