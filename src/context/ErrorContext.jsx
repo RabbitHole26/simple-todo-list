@@ -2,11 +2,11 @@ import { createContext, useContext, useState } from "react"
 
 const ErrorContext = createContext()
 
-const ErrorProvider = ({children}) => {
-  const [error, setError] = useState(false)
+const ErrorProvider = ({ children }) => {
+  const [error, setError] = useState('')
 
   return (
-    <ErrorContext.Provider value={{error, setError}}>
+    <ErrorContext.Provider value={{ error, setError }}>
       {children}
     </ErrorContext.Provider>
   )
@@ -15,4 +15,4 @@ const ErrorProvider = ({children}) => {
 const useErrorContext = () => useContext(ErrorContext)
 
 // eslint-disable-next-line react-refresh/only-export-components
-export {ErrorProvider, useErrorContext}
+export { ErrorProvider, useErrorContext }

@@ -6,10 +6,10 @@ const ButtonFavoriteItem = ({onClick, isFavorite}) => {
   return (
     <button
       onClick={onClick}
-      className="flex items-center text-2xl"
+      className="flex items-center"
     >
       <FontAwesomeIcon 
-        className="faCheckmarkCustom faCustomHover" 
+        className="text-2xl faCustomScale" 
         icon={isFavorite ? faStarSolid : faStarRegular} 
       />
     </button>

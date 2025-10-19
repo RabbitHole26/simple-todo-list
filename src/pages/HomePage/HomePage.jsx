@@ -8,6 +8,7 @@ import { isMobile } from "react-device-detect"
 import useHandleAddItem from "../../hooks/handlers/useHandleAddItem"
 import useLocalStorage from "../../hooks/useLocalStorage"
 import useToggleListLayout from '../../hooks/handlers/useToggleListLayout'
+import useHandleClearList from "../../hooks/handlers/useHandleClearList"
 import QuoteGenerator from "../../components/QuoteGenerator/QuoteGenerator"
 import ButtonToggleList from "../../components/Buttons/ButtonToggleList"
 import ButtonStyled from "../../components/Buttons/ButtonStyled"
@@ -18,9 +19,9 @@ import './HomePage.css'
 const HomePage = () => {
   // state variables
   const [input, setInput] = useState('')
-  const {showQuote} = useQuoteContext()
-  const {error} = useErrorContext()
-  const {isDarkMode} = useThemeContext()
+  const { showQuote } = useQuoteContext()
+  const { error } = useErrorContext()
+  const { isDarkMode } = useThemeContext()
   const {
     setIsAltListActive,
     isListLayoutGrid
@@ -29,10 +30,11 @@ const HomePage = () => {
   const inputRef = useRefContext()
 
   // handlers
-  const {handleAddItem} = useHandleAddItem({
-    input, 
+  const { handleAddItem } = useHandleAddItem({
+    input,
     setInput,
   })
+  const { handleClearList } = useHandleClearList()
 
   const handleInputChange = (event) => {
     setInput(event.target.value)
@@ -42,7 +44,7 @@ const HomePage = () => {
     setIsAltListActive(prev => !prev)
   }
 
-  const {toggleListLayout} = useToggleListLayout()
+  const { toggleListLayout } = useToggleListLayout()
 
   // local storage
   useLocalStorage('isListLayoutGrid', isListLayoutGrid)
@@ -57,36 +59,49 @@ const HomePage = () => {
       <div className="flex flex-col gap-5 pt-10">
 
         {/* title and fruit button */}
-        <div className="flex justify-center items-center mb-4 gap-3">
-          <h2 className='text-3xl text-center sm:text-4xl'>Simple To-Do list</h2>
-          <ButtonToggleList onClick={toggleList} className={`${isDarkMode ? 'bg-neutral-600' : 'bg-neutral-500'}`} />
+        <div className="flex justify-center items-center mb-4 gap-6">
+          {/* <h2 className='text-3xl text-center sm:text-4xl'>Simple To-Do list</h2> */}
+          <ButtonToggleList
+            onClick={toggleList}
+            className={`
+              ${isDarkMode ? 'bg-neutral-700 text-neutral-300' : 'bg-neutral-400 text-neutral-100'}
+            `}
+            variant={'toggle_list'}
+          />
+          <ButtonToggleList
+            onClick={handleClearList}
+            className={`
+              ${isDarkMode ? 'bg-neutral-700 text-neutral-300' : 'bg-neutral-400 text-neutral-100'}
+            `}
+            variant={'clear_list'}
+          />
         </div>
 
         {/* form */}
         <form className="flex flex-col justify-center sm:flex-row items-center gap-3 sm:gap-2 mb-5" action="">
-            <ButtonToggleListLayout className='hidden sm:flex' onClick={toggleListLayout} />
-            
-            <input
-              id="input"
-              type="text"
-              value={input}
-              ref={inputRef}
-              disabled={error}
-              className={`h-10 rounded-md p-2 flex-auto max-w-[264px] ${isDarkMode ? 'bg-black' : 'bg-neutral-100'}`}
-              onChange={handleInputChange}
-              placeholder="Task name..."
-              autoFocus
-            />
-            <ButtonStyled
-              $primary
-              disabled={error}
-              className={`${isMobile ? 'hidden' : ''} sm:flex max-w-[97px]`}
-              onClick={handleAddItem}
-            >
-              Add Item
-            </ButtonStyled>
+          <ButtonToggleListLayout className='hidden sm:flex' onClick={toggleListLayout} />
+
+          <input
+            id="input"
+            type="text"
+            value={input}
+            ref={inputRef}
+            disabled={error}
+            className={`rounded-md p-2 flex-auto max-w-[264px] text-xl ${isDarkMode ? 'bg-black' : 'bg-neutral-100'}`}
+            onChange={handleInputChange}
+            placeholder="Task name..."
+            autoFocus
+          />
+          <ButtonStyled
+            $primary
+            disabled={error}
+            className={`${isMobile ? 'hidden' : ''} sm:flex max-w-[97px]`}
+            onClick={handleAddItem}
+          >
+            Add Item
+          </ButtonStyled>
         </form>
-      
+
         {/* item list */}
         <ItemsList />
       </div>

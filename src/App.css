@@ -9,6 +9,7 @@
   --list-item-bg: rgba(0, 128, 128, 0.5);
   --list-item-hover-bg: rgba(0, 128, 128, 0.9);
   --list-item-checked-bg: rgba(0, 128, 128, 0.05);
+  --list-item-checked-favorite-bg: rgba(255, 127, 80, 0.05);
   --list-item-favorite-bg: rgba(255, 127, 80, 0.5);
   --list-item-favorite-hover-bg: rgba(255, 127, 80, 0.9);
   --list-item-controls-bg: rgb(0, 65, 65);
@@ -17,6 +18,7 @@
   /* effects */
   --transition-ease-in-out: all 0.1s ease-in-out;
   --transition-linear: all 0.1s linear;
+  --scale-decrease: 0.8;
   --scale-increase: 1.1;
   --scale-reset: 1;
 }
