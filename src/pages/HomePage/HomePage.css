@@ -38,26 +38,22 @@
   }
 }
 
-.faCheckmarkCustom {
-  transition: var(--transition-ease-in-out);
-
-  &:active {
-    transition: var(--transition-ease-in-out);
-  }
+.listItemCheckedFavorite {
+  background-color: var(--list-item-checked-favorite-bg);
 }
 
-.faCustomHover {
+.faCustomScale {
   transition: var(--transition-ease-in-out);
 
   &:hover {
     transform: scale(var(--scale-increase));
     transition: var(--transition-ease-in-out);
   }
-}
 
-.listItemControls {
-  color: var(--light-mode-primary);
-  background-color: var(--list-item-controls-bg);
+  &:active {
+    transform: scale(var(--scale-decrease));
+    transition: var(--transition-ease-in-out);
+  }
 }
 
 .boxShadow {
@@ -85,19 +81,23 @@
     }
   }
 
-  .faCheckmarkCustom {
-    transition: var(--transition-ease-in-out);
-  
-    &:active {
-      transform: scale(var(--scale-reset)) !important;
-      transition: var(--transition-ease-in-out);
+  .listItemCheckedFavorite {
+    background-color: var(--list-item-checked-favorite-bg);
+
+    &:hover {
+      background-color: var(--list-item-checked-favorite-bg);
     }
   }
 
-  .faCustomHover {
+  .faCustomScale {
     transition: var(--transition-ease-in-out);
-  
+
     &:hover {
+      transform: scale(var(--scale-reset));
+      transition: var(--transition-ease-in-out);
+    }
+
+    &:active {
       transform: scale(var(--scale-reset));
       transition: var(--transition-ease-in-out);
     }

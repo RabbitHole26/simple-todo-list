@@ -8,8 +8,8 @@ import ButtonToggleTheme from "../Buttons/ButtonToggleTheme"
 import ButtonToggleQuote from "../Buttons/ButtonToggleQuote"
 
 const Navbar = () => {
-  const {isDarkMode} = useThemeContext()
-  const {error} = useErrorContext()
+  const { isDarkMode } = useThemeContext()
+  const { error } = useErrorContext()
   // const {items} = useItemsContext()
 
   // const handleExportData = () => {
@@ -18,7 +18,7 @@ const Navbar = () => {
   // }
 
   return (
-    <nav className={`flex flex-row-reverse sticky justify-between top-0 z-50 ${isDarkMode ? 'bg-stone-800 text-white' : 'bg-neutral-400 text-black'} ${error ? 'opacity-20' : 'opacity100'}`}>
+    <nav className={`flex flex-row-reverse sticky justify-between top-0 z-50 ${isDarkMode ? 'bg-stone-800 text-neutral-100' : 'bg-neutral-400 text-black'} ${error ? 'opacity-20' : 'opacity100'}`}>
       <div className="flex items-center gap-2">
         <ButtonToggleQuote />
         <ButtonToggleTheme />
@@ -32,7 +32,7 @@ const Navbar = () => {
             <li>
               <Link onClick={() => daisyUiRemoveFocus()} to='/about' className="link link-hover">About</Link>
             </li>
-            <li>        
+            <li>
               <Link onClick={() => daisyUiRemoveFocus()} to='https://github.com/RabbitHole26/todo-list-public' className="link link-hover" target="blank">Github</Link>
             </li>
             {/* <li>

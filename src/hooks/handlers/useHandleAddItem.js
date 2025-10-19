@@ -3,10 +3,10 @@ import { useItemsContext } from "../../context/ItemsContext"
 import createTask from "../../utils/create-task"
 import useConditions from "../useConditions"
 
-const useHandleAddItem = ({input, setInput}) => {
-  const {items, setItems} = useItemsContext()
-  const {setError} = useErrorContext()
-  const {listIndex} = useConditions()
+const useHandleAddItem = ({ input, setInput }) => {
+  const { items, setItems } = useItemsContext()
+  const { setError } = useErrorContext()
+  const { listIndex } = useConditions()
 
   const handleAddItem = (event) => {
     event.preventDefault()
@@ -15,7 +15,7 @@ const useHandleAddItem = ({input, setInput}) => {
     const hasError = newItem.task.length === 0 || isDuplicateItem
 
     hasError
-      ? setError(true)
+      ? setError(`Unable to add duplicate or empty items.`)
       : setItems(prev => {
         const updatedItems = [...prev]
         updatedItems[listIndex] = [newItem, ...updatedItems[listIndex]]
@@ -25,7 +25,7 @@ const useHandleAddItem = ({input, setInput}) => {
     setInput('')
   }
 
-  return {handleAddItem}
+  return { handleAddItem }
 }
 
 export default useHandleAddItem
