@@ -1,6 +1,6 @@
 // ! https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API
 
-const CACHE_NAME = "simple-todo-list-cache-v2" // versioning forces cache refresh on deploy
+const CACHE_NAME = "simple-todo-list-cache-v3" // versioning forces cache refresh on deploy
 
 /*
 ** INSTALLATION
@@ -45,21 +45,21 @@ self.addEventListener('fetch', e => {
   */
 
   // if (req.mode === 'navigate') {
-    e.respondWith( // method used to respond to intercepted request
-      fetch(req) // attempt to fetch the request via network (online)
-        // when the fetch is successful, clone the request and response to store it in the origin cache
-        .then(networkRes => {
-          if (networkRes && networkRes.ok) { // make sure that the request returned 'ok' status before storing it in the cache (do not store error responses like 404, 500)
-            const resClone = networkRes.clone() // clone the response (responses are streams that are 'consumed on first use', therefore 2 copies of the request are needed; one for the app and the second for the service worker which has its own environment independent from the app)
-            caches.open(CACHE_NAME).then(cache => cache.put(req, resClone)) // save the cloned response in the cache
-          }
-          return networkRes
-        })
-        // if fetch fails (offline/network error) service worker will proceed to return a cached response or a fallback
-        .catch(() => caches
-          .match(req) // find the matching cloned request
-          .then(cachedRes => cachedRes || caches.match('/index.html')) // respond with the cached response or a fallback which is the cached app (index.html)
-        )
+  e.respondWith( // method used to respond to intercepted request
+    fetch(req) // attempt to fetch the request via network (online)
+      // when the fetch is successful, clone the request and response to store it in the origin cache
+      .then(networkRes => {
+        if (networkRes && networkRes.ok) { // make sure that the request returned 'ok' status before storing it in the cache (do not store error responses like 404, 500)
+          const resClone = networkRes.clone() // clone the response (responses are streams that are 'consumed on first use', therefore 2 copies of the request are needed; one for the app and the second for the service worker which has its own environment independent from the app)
+          caches.open(CACHE_NAME).then(cache => cache.put(req, resClone)) // save the cloned response in the cache
+        }
+        return networkRes
+      })
+      // if fetch fails (offline/network error) service worker will proceed to return a cached response or a fallback
+      .catch(() => caches
+        .match(req) // find the matching cloned request
+        .then(cachedRes => cachedRes || caches.match('/index.html')) // respond with the cached response or a fallback which is the cached app (index.html)
       )
+  )
   // }
 })
